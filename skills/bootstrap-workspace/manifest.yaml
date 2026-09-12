@@ -1,0 +1,35 @@
+schema_version: 1
+id: bootstrap-workspace
+name: Bootstrap Workspace
+category: 工作基础设施 / 工作区启动
+ownership: 个人深度定制
+status: 已安装，入口可读
+source:
+  kind: 当前安装目录
+  path: /Users/beibei/.codex/skills/bootstrap-workspace/
+  notes: 独立源项目待核验。本轮不以安装目录推断独立仓库。
+installations:
+  - host: Codex
+    path: /Users/beibei/.codex/skills/bootstrap-workspace/SKILL.md
+    readable: true
+compatibility:
+  agents:
+    - Codex
+  notes: 仅核验当前 Codex 安装入口；其他 Agent 兼容性待核验。
+dependencies:
+  - type: 运行环境
+    name: Python 3
+    location: 本机系统
+  - type: Skill 脚本
+    name: scaffold_workspace.py
+    location: 安装目录 scripts/
+sensitive_boundaries:
+  - 不保存凭证、私人原始输入或 Agent 聊天记忆。
+  - 不把未确认的敏感输入目录纳入版本控制。
+verification:
+  last_checked: 2026-09-12
+  result: 入口与元数据可读
+  notes: 入口可读不等于全部真实任务已回归通过。
+restore:
+  documented: true
+  notes: 取得权威来源后安装到目标 Agent 的 Skills 目录，读取入口，再执行一次安全的工作区预览。
