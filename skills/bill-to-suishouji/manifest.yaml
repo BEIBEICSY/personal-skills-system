@@ -1,0 +1,38 @@
+schema_version: 1
+id: bill-to-suishouji
+name: Bill to Suishouji
+category: 生活管理 / 个人记账
+ownership: 个人自制
+status: 已安装，入口可读
+source:
+  kind: 独立项目
+  path: /Users/beibei/AI_Item_Agent/20_Personal_Projects/20260706-随手记记账/
+  notes: 项目 README、分类体系、分类规则和两个处理脚本是当前规则源。
+installations:
+  - host: Codex
+    path: /Users/beibei/.codex/skills/bill-to-suishouji/SKILL.md
+    readable: true
+compatibility:
+  agents:
+    - Codex
+  notes: 仅核验当前 Codex 安装入口；其他 Agent 兼容性待核验。
+dependencies:
+  - type: 权威项目
+    name: 随手记记账工作台
+    location: /Users/beibei/AI_Item_Agent/20_Personal_Projects/20260706-随手记记账/
+  - type: 规则源
+    name: README.md、references/分类体系.md、references/classification-rules.md、scripts/merge_bills.py、scripts/fill_suishouji.py
+    location: 权威项目内
+  - type: 运行环境
+    name: Python 3
+    location: 本机系统
+sensitive_boundaries:
+  - 本仓库不保存账单、导入文件、账户明细或凭证。
+  - 只记录依赖类型与项目位置，不记录账户余额或交易原文。
+verification:
+  last_checked: 2026-09-12
+  result: 入口、项目与测试文件可读
+  notes: 本轮不运行外部项目完整测试。
+restore:
+  documented: true
+  notes: 先恢复权威项目，再安装入口文件，最后运行项目测试。
