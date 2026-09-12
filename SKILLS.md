@@ -10,6 +10,7 @@
 |---|---|---|---|---|---|---|
 | [`bootstrap-workspace`](skills/bootstrap-workspace/) | 工作基础设施 / 工作区启动 | 已安装，入口可读 | 当前以安装目录为准；独立源项目待核验 | `/Users/beibei/.codex/skills/bootstrap-workspace/SKILL.md` | 已读取 `SKILL.md`；可识别项目初始化与接管流程 | 补充来源、版本、真实试跑和跨设备恢复 |
 | [`reviewing-therapy-transcripts`](skills/reviewing-therapy-transcripts/) | 个人支持 / 心理咨询复盘 | 已安装，入口可读 | 当前以安装目录为准；独立源项目待核验 | `/Users/beibei/.cursor/skills/reviewing-therapy-transcripts/SKILL.md` | 已读取完整入口；基本边界和输出前自检存在 | 补充来源、版本、真实试跑和跨设备恢复 |
+| [`reviewing-important-conversations`](skills/reviewing-important-conversations/) | 个人支持 / 重要沟通复盘 | 已安装，入口可读 | 当前以安装目录为准；独立源项目待核验 | `/Users/beibei/.cursor/skills/reviewing-important-conversations/SKILL.md` | 已读取完整入口与 `templates.md`；核心原则、权力关系和完成前核对存在 | 补充来源、版本、沟通复盘工作区位置和真实试跑 |
 | [`bill-to-suishouji`](skills/bill-to-suishouji/) | 生活管理 / 个人记账 | 已安装，入口可读 | `/Users/beibei/AI_Item_Agent/20_Personal_Projects/20260706-随手记记账/` | `/Users/beibei/.codex/skills/bill-to-suishouji/SKILL.md` | 已读取入口、项目 README 和两个测试文件；本轮未运行 unittest | 补充版本、最近一次成功试跑与跨设备恢复 |
 
 ## 每个 Skill 的登记字段

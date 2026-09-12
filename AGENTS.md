@@ -25,7 +25,7 @@ Before making changes:
 
 - This workspace is the management index for personal Skills; do not assume it contains every Skill's canonical source.
 - Do not copy, relocate, edit, install, or uninstall a managed Skill unless the active task explicitly requires it.
-- Keep personal finance records, psychological consultation content, credentials, tokens, and other private raw data out of this workspace.
+- Keep personal finance records, psychological consultation content, important-conversation recordings or transcripts, credentials, tokens, and other private raw data out of this workspace.
 - Inventory credentials only by dependency type and storage location; never record secret values.
 - Record uncertainty explicitly. A user-confirmed Skill with an unverified path must remain marked `待核验`.
 - Put repeatable inventory, validation, or synchronization steps in `scripts/` and document how to run them.

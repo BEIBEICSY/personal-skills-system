@@ -4,10 +4,11 @@
 
 ## 当前基线
 
-第一版从三个真实 Skill 出发，每个 Skill 都有独立维护档案：
+当前已登记的自制 Skill 都有独立维护档案：
 
 - 工作区启动：[`bootstrap-workspace`](skills/bootstrap-workspace/)
 - 心理咨询复盘：[`reviewing-therapy-transcripts`](skills/reviewing-therapy-transcripts/)
+- 重要沟通复盘：[`reviewing-important-conversations`](skills/reviewing-important-conversations/)
 - 记账：[`bill-to-suishouji`](skills/bill-to-suishouji/)
 
 详细状态见 [`SKILLS.md`](SKILLS.md)。原始想法与收敛过程见 [`2026-05-25-ai-skills-environment-inventory.md`](2026-05-25-ai-skills-environment-inventory.md)。

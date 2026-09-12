@@ -23,11 +23,16 @@ dependencies:
   - type: 可选工作区文件
     name: 价值观脉络
     location: 仅在目标工作区明确配置时使用
+  - type: 相关 Skill
+    name: reviewing-important-conversations
+    location: skills/reviewing-important-conversations/
+    notes: 非心理咨询沟通必须改用该 Skill。不得同时更新两套脉络；用户明确允许且来源确实相关时可以相互引用，但不自动复制、合并或把一套结论归入另一套。
 sensitive_boundaries:
   - 不保存逐字稿、咨询笔记原文或其他私人咨询内容。
   - 明确内容、互动观察与工作假设必须分离。
   - 不把工作假设写成诊断或事实。
   - 本仓库只记录规则结构与维护状态，不收录复盘产物。
+  - 咨询价值观脉络与沟通脉络保持分离；允许在用户明确同意且来源相关时相互引用，禁止自动复制或合并。
 verification:
   last_checked: 2026-09-12
   result: 完整入口可读，关键安全章节存在
