@@ -12,11 +12,11 @@
 
 **Reason:** 现有 Skill 可能已有独立项目和安装入口。管理仓库只负责可核验的元信息与恢复步骤。
 
-## 2026-09-12 — GitHub 后续作为主版本源，默认私有
+## 2026-09-12 — GitHub 作为主版本源，默认私有
 
-**Decision:** 本地 Git 使用 `main`。GitHub 将作为后续主版本源，默认创建私有仓库；创建远程前单独确认 GitHub 账号归属和仓库名称。
+**Decision:** 本地 Git 使用 `main`。主版本源为私有仓库 `https://github.com/BEIBEICSY/personal-skills-system`，账号 `BEIBEICSY`。
 
-**Reason:** 需要跨设备拉取和按需分享，但当前档案仍含本机路径，且个人 Skills 管理信息不适合默认公开。
+**Reason:** 需要跨设备拉取和按需分享，但个人 Skills 管理信息和本机路径不适合默认公开。
 
 ## 2026-09-12 — 将个人 Skills 系统设为 Personal 项目
 

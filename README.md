@@ -2,6 +2,8 @@
 
 这是陈贝贝个人 Skills 的统一管理入口，用来登记、核验、更新、安装、迁移和恢复自己已经跑通的 Skills。本仓库保存管理档案和更新机制，不集中接管各 Skill 的源码。
 
+主版本源（私有）：https://github.com/BEIBEICSY/personal-skills-system
+
 ## 当前基线
 
 当前已登记的自制 Skill 都有独立维护档案：

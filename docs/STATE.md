@@ -15,18 +15,17 @@ Last updated: 2026-09-12
 - 为 `bootstrap-workspace`、`reviewing-therapy-transcripts`、`bill-to-suishouji` 建立独立维护档案。
 - 将心理咨询 Skill 从“位置待核验”更新为已找到 Cursor 安装入口。
 - 增补 `reviewing-important-conversations` 独立维护档案，并记录与心理咨询 Skill 的分流。
+- 创建 GitHub 私有远程仓库并推送 `main`：`https://github.com/BEIBEICSY/personal-skills-system`。
 
 ## In progress
 
 - 补充现有 Skill 的版本信息、真实试跑记录和跨设备恢复方式。
-- 准备将 GitHub 私有仓库作为后续主版本源。
 
 ## Next actions
 
 1. 为现有 Skill 补充版本、最近一次真实试跑和跨设备恢复记录。
-2. 确认 GitHub 账号归属和仓库名称后，创建默认私有的远程仓库。
-3. 把早期清单中的金山文档、Superpowers、TickTick MCP 等区分为“自制 Skill”与“外部依赖”。
-4. 真实维护需求出现后，再决定是否编写自动扫描或同步脚本。
+2. 把早期清单中的金山文档、Superpowers、TickTick MCP 等区分为“自制 Skill”与“外部依赖”。
+3. 真实维护需求出现后，再决定是否编写自动扫描或同步脚本。
 
 ## Blockers
 
@@ -38,7 +37,7 @@ Last updated: 2026-09-12
 - 2026-09-12：确认 `/Users/beibei/.cursor/skills/reviewing-therapy-transcripts/SKILL.md` 可读取，且基本边界、输出前自检存在。
 - 2026-09-12：确认 `/Users/beibei/.cursor/skills/reviewing-important-conversations/SKILL.md` 与 `templates.md` 可读取，且核心原则、权力关系、完成前核对存在。
 - 2026-09-12：确认 `/Users/beibei/.codex/skills/bill-to-suishouji/SKILL.md`、权威项目 README 和两个测试文件可读取。
-- 2026-09-12：三个 `skills/<id>/` 档案齐全，`SKILLS.md` 可导航；敏感模式扫描无匹配。
-- 2026-09-12：本地分支为 `main`，尚无 Git remote。
-- 2026-09-12：未运行随手记项目 `unittest`，也未做私人逐字稿或真实账单试跑。
-- 关键提交：`b6d47d6`、`6bdd3e1`、`b42d0f5`、`bdebcce`、`0735855`。
+- 2026-09-12：四个 `skills/<id>/` 档案齐全，`SKILLS.md` 可导航；推送前敏感模式扫描无匹配。
+- 2026-09-12：本地分支 `main` 已跟踪 `origin/main`。
+- 2026-09-12：未运行随手记项目 `unittest`，也未做私人逐字稿、真实账单或沟通材料试跑。
+- 关键提交：`cd4dcbd`。

@@ -2,6 +2,14 @@
 
 这是个人 Skills 系统的重要成果索引，按时间倒序维护。只记录可复用的结果、验证和关键失败，不保存聊天转录或私人原始数据。
 
+## 2026-09-12 — 建立 GitHub 私有主版本源
+
+- **任务：** 提交四个 Skill 档案，并创建可跨设备拉取的 GitHub 环境。
+- **结果：** 私有仓库已建立并推送 `main`。
+- **产物：** https://github.com/BEIBEICSY/personal-skills-system
+- **验证：** 推送前敏感模式扫描无匹配；远程为 private；`main` 已跟踪 `origin/main`。未运行外部项目测试，也未试跑私人材料。
+- **后续：** 换设备时用该仓库克隆；继续补充版本和真实试跑记录。
+
 ## 2026-09-12 — 增补重要沟通复盘 Skill
 
 - **任务：** 将 `reviewing-important-conversations` 纳入个人 Skills 管理仓库。
