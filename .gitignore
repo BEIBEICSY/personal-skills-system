@@ -1,0 +1,17 @@
+# Machine-local inventory and overrides
+local/
+
+# Secrets and environment overrides
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials.*
+secrets.*
+
+# Operating system and editor state
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

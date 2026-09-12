@@ -1,0 +1,37 @@
+schema_version: 1
+id: example-skill
+name: Example Skill
+category: 通用 / 示例分类
+ownership: 个人自制
+status: 待核验
+source:
+  kind: 待核验
+  path: 待核验
+  notes: 独立源项目尚未确认时保持待核验，不以安装目录推断权威来源。
+installations:
+  - host: Codex / Cursor / 其他
+    path: /path/to/agent/skills/example-skill/SKILL.md
+    readable: 待核验
+compatibility:
+  agents:
+    - Codex
+    - Cursor
+  notes: 只记录已检查过的宿主；未检查的保持待核验。
+dependencies:
+  - type: 运行环境
+    name: 例如 Python 3
+    location: 本机系统
+  - type: 账号或授权
+    name: 仅记录依赖类型与位置
+    location: 例如环境变量文件路径
+    secret_value: never-store
+sensitive_boundaries:
+  - 不保存凭证、Token 或密钥明文。
+  - 不保存账单、咨询逐字稿或其他私人原始数据。
+verification:
+  last_checked: 待核验
+  result: 待核验
+  notes: 入口可读不等于真实任务已回归通过。
+restore:
+  documented: true
+  notes: 新设备先恢复权威来源，再安装到目标 Agent 的 Skills 目录。
