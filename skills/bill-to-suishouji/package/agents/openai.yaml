@@ -1,0 +1,4 @@
+interface:
+  display_name: "随手记记账"
+  short_description: "清洗支付宝和微信账单并生成随手记导入文件与检查报告"
+  default_prompt: "Use $bill-to-suishouji to turn my Alipay and WeChat bills into a Suishouji import file."

@@ -1,0 +1,7 @@
+# Copy to ../../local/bill-to-suishouji.yaml if needed. That file is gitignored.
+
+workbench: ~/Documents/suishouji-workbench
+soffice: soffice
+hosts:
+  cursor: ~/.cursor/skills/bill-to-suishouji
+  codex: ~/.codex/skills/bill-to-suishouji

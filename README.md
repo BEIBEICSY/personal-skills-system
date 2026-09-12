@@ -1,13 +1,16 @@
 # 陈贝贝个人 Skills 管理仓库
 
-这是陈贝贝个人 Skills 的统一管理入口，用来登记、核验、更新、安装、迁移和恢复自己已经跑通的 Skills。已收包的 Skill 以 `skills/<id>/package/` 为权威来源；未收包的 Skill 仍只保存管理档案。
+这是陈贝贝个人 Skills 的统一管理入口，用来登记、核验、更新、安装、迁移和恢复自己已经跑通的 Skills。四个自制 Skill 都以 `skills/<id>/package/` 为权威来源。
 
 主版本源（私有）：https://github.com/BEIBEICSY/personal-skills-system
 
-安装已收包 Skill：
+安装：
 
 ```bash
 python3 scripts/install_skill.py bootstrap-workspace --host cursor
+python3 scripts/install_skill.py reviewing-therapy-transcripts --host cursor
+python3 scripts/install_skill.py reviewing-important-conversations --host cursor
+python3 scripts/install_skill.py bill-to-suishouji --host codex
 ```
 
 ## 当前基线

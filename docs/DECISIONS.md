@@ -6,11 +6,11 @@
 
 **Reason:** 后续要在同一套机制里迭代 Skill，并让自己或朋友拉取后能安装使用。
 
-## 2026-09-12 — 先把 bootstrap-workspace 做成第一份可安装包
+## 2026-09-12 — 四个自制 Skill 都收入可安装包
 
-**Decision:** 第一个迁入 package 的 Skill 是 `bootstrap-workspace`。记账、咨询和沟通复盘仍先保留档案，等拆出可分享部分后再收包。
+**Decision:** `bootstrap-workspace`、`reviewing-therapy-transcripts`、`reviewing-important-conversations`、`bill-to-suishouji` 都以本仓库 `package/` 为权威来源。咨询和沟通只收规则；记账收脚本和分类规则，账单仍留本地工作台。
 
-**Reason:** 工作区启动 Skill 通用、隐私少，适合验证安装和更新流程。
+**Reason:** 用户要在这个仓库迭代和安装全部自制 Skill，同时继续把私人原文挡在仓库外。
 
 ## 2026-09-12 — 采用一 Skill 一档案目录的混合型管理仓库
 
