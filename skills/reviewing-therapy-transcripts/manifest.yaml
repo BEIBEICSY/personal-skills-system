@@ -1,0 +1,37 @@
+schema_version: 1
+id: reviewing-therapy-transcripts
+name: Reviewing Therapy Transcripts
+category: 个人支持 / 心理咨询复盘
+ownership: 个人自制
+status: 已安装，入口可读
+source:
+  kind: 当前安装目录
+  path: /Users/beibei/.cursor/skills/reviewing-therapy-transcripts/
+  notes: 独立源项目待核验。本轮不以安装目录推断独立仓库。
+installations:
+  - host: Cursor
+    path: /Users/beibei/.cursor/skills/reviewing-therapy-transcripts/SKILL.md
+    readable: true
+compatibility:
+  agents:
+    - Cursor
+  notes: 仅核验当前 Cursor 安装入口；其他 Agent 兼容性待核验。
+dependencies:
+  - type: 输入
+    name: 用户提供的咨询逐字稿
+    location: 会话或用户指定的外部工作区
+  - type: 可选工作区文件
+    name: 价值观脉络
+    location: 仅在目标工作区明确配置时使用
+sensitive_boundaries:
+  - 不保存逐字稿、咨询笔记原文或其他私人咨询内容。
+  - 明确内容、互动观察与工作假设必须分离。
+  - 不把工作假设写成诊断或事实。
+  - 本仓库只记录规则结构与维护状态，不收录复盘产物。
+verification:
+  last_checked: 2026-09-12
+  result: 完整入口可读，关键安全章节存在
+  notes: 尚未进行新的私人逐字稿真实试跑。
+restore:
+  documented: true
+  notes: 从确认后的权威来源安装；恢复时只验证规则结构，不把私人逐字稿提交到本仓库。
