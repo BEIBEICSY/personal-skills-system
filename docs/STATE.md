@@ -36,4 +36,7 @@ Last updated: 2026-09-12
 - 2026-09-12：确认 `/Users/beibei/.codex/skills/bootstrap-workspace/SKILL.md` 可读取。
 - 2026-09-12：确认 `/Users/beibei/.cursor/skills/reviewing-therapy-transcripts/SKILL.md` 可读取，且基本边界、输出前自检存在。
 - 2026-09-12：确认 `/Users/beibei/.codex/skills/bill-to-suishouji/SKILL.md`、权威项目 README 和两个测试文件可读取。
+- 2026-09-12：三个 `skills/<id>/` 档案齐全，`SKILLS.md` 可导航；敏感模式扫描无匹配。
+- 2026-09-12：本地分支为 `main`，尚无 Git remote。
 - 2026-09-12：未运行随手记项目 `unittest`，也未做私人逐字稿或真实账单试跑。
+- 关键提交：`b6d47d6`、`6bdd3e1`、`b42d0f5`、`bdebcce`、`0735855`。

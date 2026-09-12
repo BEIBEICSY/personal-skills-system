@@ -7,7 +7,7 @@
 - **任务：** 在本地 Git 中建立“一 Skill 一档案目录”的管理仓库，不集中接管源码。
 - **结果：** 新增模板、三个独立档案目录，以及全局索引和决策记录；心理咨询 Skill 定位为 `reviewing-therapy-transcripts`。
 - **产物：** `.gitignore`、`templates/skill-record/`、`skills/bootstrap-workspace/`、`skills/reviewing-therapy-transcripts/`、`skills/bill-to-suishouji/`。
-- **验证：** 三个安装入口均可读取；记账权威项目 README 与两个测试文件可读；本轮未运行外部项目 unittest，也未做私人逐字稿或真实账单试跑。
+- **验证：** 三个安装入口均可读取；记账权威项目 README 与两个测试文件可读；仓库结构与敏感扫描通过；本轮未运行外部项目 unittest，也未做私人逐字稿或真实账单试跑。本地 `main` 尚无远程。
 - **后续：** 补充版本与真实试跑，并在确认账号和仓库名后创建 GitHub 私有远程仓库。
 
 ## 2026-09-12 — 个人 Skills 系统正式成立

@@ -36,16 +36,29 @@
 
 ## Progress
 
-- In progress on 2026-09-12.
+- Completed on 2026-09-12.
 
 ## Outcome
 
-- 已建立三个独立档案目录，并将仓库定位更新为陈贝贝个人 Skills 管理仓库。
+- 已建立三个独立档案目录，并将仓库定位更新为陈贝贝个人 Skills 管理仓库。本地 Git 在 `main`，尚无远程。
 
 ## Verification
 
 - 已确认三个安装入口可读。
 - 已确认记账权威项目 README 与两个测试文件可读。
+- 仓库结构检查通过：三个 `skills/<id>/` 档案齐全，`SKILLS.md` 可导航。
+- 敏感模式扫描无匹配。
+- 当前分支为 `main`，`git remote` 为空。
 - 未运行随手记项目 unittest。
 - 未进行私人逐字稿或真实账单试跑。
 - GitHub 远程仓库创建仍待下一步。
+
+## Commits
+
+- `ed0636b` docs: establish personal skills repository design
+- `b116176` docs: add personal skills repository implementation plan
+- `b6d47d6` chore: add skill record template and safety rules
+- `6bdd3e1` docs: add bootstrap workspace skill record
+- `b42d0f5` docs: add therapy transcript review skill record
+- `bdebcce` docs: add Suishouji bookkeeping skill record
+- `0735855` docs: establish personal skills management repository
