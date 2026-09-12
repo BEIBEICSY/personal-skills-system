@@ -1,35 +1,39 @@
 schema_version: 1
 id: bootstrap-workspace
 name: Bootstrap Workspace
+version: 0.1.0
 category: 工作基础设施 / 工作区启动
 ownership: 个人深度定制
-status: 已安装，入口可读
+status: 已收包，可安装
 source:
-  kind: 当前安装目录
-  path: /Users/beibei/.codex/skills/bootstrap-workspace/
-  notes: 独立源项目待核验。本轮不以安装目录推断独立仓库。
+  kind: 本仓库 package
+  path: skills/bootstrap-workspace/package/
+  notes: 本仓库为权威来源。更新时先改 package，再运行安装脚本。
 installations:
   - host: Codex
-    path: /Users/beibei/.codex/skills/bootstrap-workspace/SKILL.md
+    path: ~/.codex/skills/bootstrap-workspace/SKILL.md
     readable: true
+    notes: 现有安装来自收包前的本机副本；尚未用本仓库安装脚本覆盖。
 compatibility:
   agents:
     - Codex
-  notes: 仅核验当前 Codex 安装入口；其他 Agent 兼容性待核验。
+    - Cursor
+  notes: 安装脚本支持 `--host cursor` 与 `--host codex`。本轮未覆盖直播安装目录。
 dependencies:
   - type: 运行环境
     name: Python 3
     location: 本机系统
   - type: Skill 脚本
     name: scaffold_workspace.py
-    location: 安装目录 scripts/
+    location: package/scripts/
 sensitive_boundaries:
   - 不保存凭证、私人原始输入或 Agent 聊天记忆。
   - 不把未确认的敏感输入目录纳入版本控制。
+  - package 中不写入本机绝对路径。
 verification:
   last_checked: 2026-09-12
-  result: 入口与元数据可读
-  notes: 入口可读不等于全部真实任务已回归通过。
+  result: 安装脚本测试通过
+  notes: python3 tests/test_install_skill.py -v
 restore:
   documented: true
-  notes: 取得权威来源后安装到目标 Agent 的 Skills 目录，读取入口，再执行一次安全的工作区预览。
+  notes: 克隆本仓库后运行 scripts/install_skill.py bootstrap-workspace --host <cursor|codex>。

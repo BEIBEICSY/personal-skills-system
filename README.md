@@ -1,8 +1,14 @@
 # 陈贝贝个人 Skills 管理仓库
 
-这是陈贝贝个人 Skills 的统一管理入口，用来登记、核验、更新、安装、迁移和恢复自己已经跑通的 Skills。本仓库保存管理档案和更新机制，不集中接管各 Skill 的源码。
+这是陈贝贝个人 Skills 的统一管理入口，用来登记、核验、更新、安装、迁移和恢复自己已经跑通的 Skills。已收包的 Skill 以 `skills/<id>/package/` 为权威来源；未收包的 Skill 仍只保存管理档案。
 
 主版本源（私有）：https://github.com/BEIBEICSY/personal-skills-system
+
+安装已收包 Skill：
+
+```bash
+python3 scripts/install_skill.py bootstrap-workspace --host cursor
+```
 
 ## 当前基线
 
@@ -27,6 +33,8 @@
 
 - `SKILLS.md`：个人自制 Skills 总表与登记规则。
 - `skills/<skill-id>/`：单个 Skill 的独立维护档案。
+- `skills/<skill-id>/package/`：已收包 Skill 的可安装内容。
+- `scripts/install_skill.py`：把 package 安装或更新到 Agent Skills 目录。
 - `templates/skill-record/`：新增 Skill 时复制的档案模板。
 - `AGENTS.md`：所有 Agent 共用的项目操作规则。
 - `docs/PROJECT.md`：稳定目标、范围和完成标准。

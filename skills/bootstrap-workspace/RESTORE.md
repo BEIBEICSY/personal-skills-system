@@ -2,25 +2,40 @@
 
 ## 前置条件
 
-- 已取得权威来源，或明确以当前安装目录作为临时来源。
+- 已克隆 `https://github.com/BEIBEICSY/personal-skills-system`。
 - 目标 Agent 的 Skills 目录可写。
-- 不把凭证、私人原始输入或 Agent 聊天记忆复制进本管理仓库。
+- 不把凭证或私人原始输入复制进本仓库。
 
-## 恢复步骤
+## 自己或朋友安装
 
-1. 取得权威来源或已核验的安装副本。独立源项目待核验前，可临时使用当前安装目录。
-2. 安装到目标 Agent 的 Skills 目录。
-3. 读取入口 `SKILL.md`，确认名称为 `bootstrap-workspace`。
-4. 在安全目标上执行一次工作区预览，例如带 `--dry-run` 的脚手架，不写入敏感输入。
+```bash
+git clone https://github.com/BEIBEICSY/personal-skills-system.git
+cd personal-skills-system
+python3 scripts/install_skill.py bootstrap-workspace --host cursor
+# 或
+python3 scripts/install_skill.py bootstrap-workspace --host codex
+```
+
+自定义目录：
+
+```bash
+python3 scripts/install_skill.py bootstrap-workspace --target ~/custom/skills/bootstrap-workspace
+```
+
+## 更新
+
+1. 在本仓库修改 `skills/bootstrap-workspace/package/`。
+2. `git push`。
+3. 各设备 `git pull` 后重新运行安装脚本。
 
 ## 恢复后验证
 
-- 入口文件可读。
-- 触发描述仍指向工作区初始化与唯一 `AGENTS.md`。
-- 预览不创建远程仓库、不提交密钥。
+- 目标目录存在 `SKILL.md`。
+- `python3 <install-dir>/scripts/scaffold_workspace.py --help` 可运行。
+- 管理档案 `manifest.yaml` 没有被复制到安装目录。
 
 ## 人工介入点
 
-- 独立源项目确认前，跨设备只能按安装副本迁移。
-- 本机绝对路径不能当作跨设备契约。
-- 真实接管已有仓库前，先核对未提交内容和敏感文件。
+- 覆盖已有安装前先确认对方没有未同步的本地改动。
+- 本机自定义路径写到 `local/bootstrap-workspace.yaml`，不要提交。
+- 仓库是私有的；朋友使用前需要先获得 GitHub 协作权限。

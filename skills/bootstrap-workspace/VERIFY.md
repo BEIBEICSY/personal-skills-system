@@ -2,24 +2,29 @@
 
 ## 检查范围
 
-- 确认 Codex 安装入口存在且可读取。
-- 确认 frontmatter 中的 `name` 与 `description` 存在。
-- 不宣称全部真实任务已回归通过。
+- 确认本仓库 `package/SKILL.md` 存在且不含本机绝对路径。
+- 确认安装脚本只复制 package，不复制管理档案。
+- 确认安装后的脚手架脚本可以 `--dry-run`。
 
 ## 检查步骤
 
-1. 读取 `/Users/beibei/.codex/skills/bootstrap-workspace/SKILL.md`。
-2. 核验名称是否为 `bootstrap-workspace`。
-3. 记录独立源项目是否已找到；未找到则保持 `待核验`。
+1. 读取 `skills/bootstrap-workspace/package/SKILL.md`。
+2. 运行：
+
+```bash
+python3 tests/test_install_skill.py -v
+```
+
+3. 需要更新本机安装时，再运行 `scripts/install_skill.py`，不要把测试目录写到直播 Skills 目录。
 
 ## 最近结果
 
 - 日期：2026-09-12
-- 结果：入口与元数据可读
-- 证据：`SKILL.md` 可读；`name: bootstrap-workspace` 与用途描述存在。独立源项目仍待核验。
+- 结果：安装脚本测试通过
+- 证据：`test_bootstrap_package_has_skill_entry`、`test_install_copies_package_only`、`test_installed_scaffold_dry_run` 均通过。未覆盖直播 Codex 安装目录。
 
 ## 未运行检查
 
-- 未对全新空目录执行 `scaffold_workspace.py --dry-run`。
-- 未做跨 Agent / 跨设备安装回归。
-- 未确认独立源码仓库。
+- 未对直播 `~/.codex/skills/bootstrap-workspace` 执行覆盖安装。
+- 未在 Cursor 宿主做真实安装回归。
+- 未对真实空项目执行非 dry-run 脚手架。

@@ -1,0 +1,6 @@
+# Copy to ../../local/bootstrap-workspace.yaml if a machine needs custom install paths.
+# That local file is gitignored.
+
+hosts:
+  cursor: ~/.cursor/skills/bootstrap-workspace
+  codex: ~/.codex/skills/bootstrap-workspace

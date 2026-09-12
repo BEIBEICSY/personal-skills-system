@@ -2,6 +2,14 @@
 
 这是个人 Skills 系统的重要成果索引，按时间倒序维护。只记录可复用的结果、验证和关键失败，不保存聊天转录或私人原始数据。
 
+## 2026-09-12 — bootstrap-workspace 收成可安装包
+
+- **任务：** 把仓库改成可迭代入口，并先收一份可安装 Skill。
+- **结果：** 新增 `skills/bootstrap-workspace/package/` 与 `scripts/install_skill.py`；朋友或新设备可在获得仓库权限后安装。
+- **产物：** 安装脚本、测试、任务卡 `docs/tasks/2026-09-12-package-bootstrap-workspace.md`。
+- **验证：** `python3 tests/test_install_skill.py -v` 通过；未覆盖直播安装目录。
+- **后续：** 本机按需安装；其余 Skill 等拆出可分享部分后再收包。
+
 ## 2026-09-12 — 建立 GitHub 私有主版本源
 
 - **任务：** 提交四个 Skill 档案，并创建可跨设备拉取的 GitHub 环境。

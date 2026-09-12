@@ -1,0 +1,47 @@
+# Workspace instructions
+
+## Startup
+
+Before making changes:
+
+1. Read `README.md`.
+2. Read `docs/PROJECT.md` for stable goals and scope.
+3. Read `docs/STATE.md` for current progress, next actions, and blockers.
+4. When resuming prior work or when current context is insufficient, read the newest relevant entries in `docs/HISTORY.md`.
+5. Read the relevant task specification under `docs/tasks/` when one exists.
+6. If this is a Git workspace, inspect current status and preserve existing user changes.
+
+## Source-of-truth order
+
+When project information conflicts, use this order:
+
+1. The user's current explicit instruction.
+2. The active task specification.
+3. Executable contracts such as tests, schemas, and API definitions.
+4. `docs/DECISIONS.md`.
+5. `docs/PROJECT.md` and other maintained project documentation.
+6. `README.md`.
+7. Chat history and proprietary agent memory, which are non-authoritative caches.
+
+## Workspace boundaries
+
+{{DIRECTORY_RULES}}
+
+## Change rules
+
+- Preserve user-authored and unrelated changes.
+- Do not invent commands, requirements, architecture, or acceptance criteria.
+- Do not write secrets, credentials, or private data into documentation.
+- Keep this file concise; link to canonical project documents instead of copying them.
+- Update documentation when a change makes an existing statement false.
+
+## Completion
+
+Before reporting completion:
+
+1. Run the smallest relevant validation that actually exists.
+2. Review the changed-file scope.
+3. Update the active task specification and `docs/STATE.md` when progress changed.
+4. When the work produced a meaningful outcome or reusable finding, add one concise entry to `docs/HISTORY.md`; do not log routine conversation or private reasoning.
+5. Record durable decisions in `docs/DECISIONS.md`.
+6. Report changed files, verification results, unrun checks, and remaining issues.

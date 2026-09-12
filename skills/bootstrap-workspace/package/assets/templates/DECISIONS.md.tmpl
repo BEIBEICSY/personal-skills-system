@@ -1,0 +1,19 @@
+# Decisions
+
+## {{DATE}} — Use the workspace as the durable source of truth
+
+**Decision:** Keep stable project context in versionable workspace files. Treat chat history and agent-specific memory as non-authoritative caches.
+
+**Reason:** The project must remain understandable when switching agents, interfaces, or sessions.
+
+## {{DATE}} — Keep one canonical agent instruction file
+
+**Decision:** Use the workspace-root `AGENTS.md` as the only canonical agent-instruction source.
+
+**Reason:** Tool-specific copies drift. Hosts that cannot discover `AGENTS.md` should use a thin external adapter or project setting.
+
+## {{DATE}} — Adopt the `{{PROFILE}}` workspace profile
+
+**Decision:** {{PROFILE_DECISION}}
+
+**Reason:** Start with the smallest durable structure that matches the current work without guessing a technology stack or creating redundant folders.
