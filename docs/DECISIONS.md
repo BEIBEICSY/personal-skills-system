@@ -1,5 +1,23 @@
 # Decisions
 
+## 2026-09-12 — 采用一 Skill 一档案目录的混合型管理仓库
+
+**Decision:** 每个 Skill 在 `skills/<skill-id>/` 拥有独立维护档案；`SKILLS.md` 只做全局摘要。已有独立权威项目的 Skill 继续在原项目维护源码，本仓库不复制、不接管。
+
+**Reason:** 仓库目标是 Skills 的管理和更新机制，不是源码单体仓。独立档案能体现分别维护，又避免与现有项目形成双份真相。
+
+## 2026-09-12 — 本仓库管理机制，源码仍以独立权威来源为准
+
+**Decision:** 本仓库保存清单、验证、恢复和维护历史；Skill 规则与实现仍以各自权威来源为准。
+
+**Reason:** 现有 Skill 可能已有独立项目和安装入口。管理仓库只负责可核验的元信息与恢复步骤。
+
+## 2026-09-12 — GitHub 后续作为主版本源，默认私有
+
+**Decision:** 本地 Git 使用 `main`。GitHub 将作为后续主版本源，默认创建私有仓库；创建远程前单独确认 GitHub 账号归属和仓库名称。
+
+**Reason:** 需要跨设备拉取和按需分享，但当前档案仍含本机路径，且个人 Skills 管理信息不适合默认公开。
+
 ## 2026-09-12 — 将个人 Skills 系统设为 Personal 项目
 
 **Decision:** 项目位于 `/Users/beibei/AI_Item_Agent/20_Personal_Projects/20260912-personal-skills-system/`。

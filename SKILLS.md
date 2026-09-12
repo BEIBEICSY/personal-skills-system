@@ -2,19 +2,19 @@
 
 最后核验：2026-09-12
 
-本表优先登记贝贝自己制作、深度定制或承担长期个人工作流的 Skills。第三方通用 Skills、插件和 MCP 可以作为依赖登记，但不自动算作“自己的 Skill”。
+本表是陈贝贝个人 Skills 管理仓库的全局索引。优先登记自己制作、深度定制或承担长期个人工作流的 Skills。详细维护信息以 `skills/<skill-id>/` 为准。第三方通用 Skills、插件和 MCP 可以作为依赖登记，但不自动算作“自己的 Skill”。
 
 ## 当前自制 Skills
 
 | Skill | 场景分类 | 当前状态 | 权威来源 / 项目 | 当前安装入口 | 本轮核验 | 下一步 |
 |---|---|---|---|---|---|---|
-| `bootstrap-workspace` | 工作基础设施 / 工作区启动 | 已安装，入口可读 | 当前以安装目录为准；独立源项目待确认 | `/Users/beibei/.codex/skills/bootstrap-workspace/SKILL.md` | 已读取 `SKILL.md`；可识别项目初始化与接管流程 | 补充来源、版本和跨 Agent 兼容记录 |
-| 心理咨询 Skill | 个人支持 / 心理咨询 | 用户确认已有，位置待核验 | 待确认 | 待确认 | 已扫描常用 `.codex/skills`、`.agents/skills` 和项目目录，尚未定位对应 `SKILL.md` | 找到实际名称与路径后补录；核对隐私边界 |
-| `bill-to-suishouji` | 生活管理 / 个人记账 | 已安装，入口可读 | `/Users/beibei/AI_Item_Agent/20_Personal_Projects/20260706-随手记记账/` | `/Users/beibei/.codex/skills/bill-to-suishouji/SKILL.md` | 已读取入口；确认引用项目脚本、分类体系和测试 | 补充版本、最近一次成功试跑与恢复步骤 |
+| [`bootstrap-workspace`](skills/bootstrap-workspace/) | 工作基础设施 / 工作区启动 | 已安装，入口可读 | 当前以安装目录为准；独立源项目待核验 | `/Users/beibei/.codex/skills/bootstrap-workspace/SKILL.md` | 已读取 `SKILL.md`；可识别项目初始化与接管流程 | 补充来源、版本、真实试跑和跨设备恢复 |
+| [`reviewing-therapy-transcripts`](skills/reviewing-therapy-transcripts/) | 个人支持 / 心理咨询复盘 | 已安装，入口可读 | 当前以安装目录为准；独立源项目待核验 | `/Users/beibei/.cursor/skills/reviewing-therapy-transcripts/SKILL.md` | 已读取完整入口；基本边界和输出前自检存在 | 补充来源、版本、真实试跑和跨设备恢复 |
+| [`bill-to-suishouji`](skills/bill-to-suishouji/) | 生活管理 / 个人记账 | 已安装，入口可读 | `/Users/beibei/AI_Item_Agent/20_Personal_Projects/20260706-随手记记账/` | `/Users/beibei/.codex/skills/bill-to-suishouji/SKILL.md` | 已读取入口、项目 README 和两个测试文件；本轮未运行 unittest | 补充版本、最近一次成功试跑与跨设备恢复 |
 
 ## 每个 Skill 的登记字段
 
-后续新增或维护 Skill 时，至少记录：
+后续新增或维护 Skill 时，先复制 `templates/skill-record/`，至少记录：
 
 - 名称与一句话用途
 - 工作 / 生活 / 通用分类
