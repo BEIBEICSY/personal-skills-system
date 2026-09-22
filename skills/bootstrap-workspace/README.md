@@ -37,4 +37,5 @@ python3 scripts/install_skill.py bootstrap-workspace --host cursor --dry-run
 
 - 全局索引：[`SKILLS.md`](../../SKILLS.md)
 - 可安装入口：[`package/SKILL.md`](package/SKILL.md)
+- 当前本机 Cursor 安装：`~/.cursor/skills/bootstrap-workspace/SKILL.md`
 - 当前本机 Codex 安装：`~/.codex/skills/bootstrap-workspace/SKILL.md`

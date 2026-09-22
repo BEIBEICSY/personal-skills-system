@@ -2,6 +2,30 @@
 
 这是个人 Skills 系统的重要成果索引，按时间倒序维护。只记录可复用的结果、验证和关键失败，不保存聊天转录或私人原始数据。
 
+## 2026-09-22 — bootstrap-workspace 增加任务清单与自动建档
+
+- **任务：** [规格](superpowers/specs/2026-09-22-bootstrap-workspace-task-tracking-design.md)；[计划](superpowers/plans/2026-09-22-bootstrap-workspace-task-tracking.md)。
+- **结果：** 首次初始化写入 `docs/tasks/INDEX.md` 和 initialize-workspace 任务；接管已有工作区只补 stub。生成的 `AGENTS.md` 要求按工作目标续做或新建任务。
+- **产物：** `skills/bootstrap-workspace/package/` 模板与脚手架、`tests/test_scaffold_workspace.py`。
+- **验证：** `python3 tests/test_scaffold_workspace.py -v` 与 `python3 tests/test_install_skill.py -v` 通过。
+- **后续：** 本机 Cursor / Codex 按用户要求用安装脚本覆盖；不把本仓库自身改造成新模板示例。
+
+## 2026-09-12 — 文档状态校准为稳态运营
+
+- **任务：** 用户确认体系已建好，核对项目文档是否仍停留在建设中口径。
+- **结果：** 第一里程碑标为已完成；`STATE.md` 改为无进行中基建、按需运营；`SKILLS.md` 与档案模板补齐 `已收包，可安装` 状态口径；澄清未收包 vs 已收包权威来源决策。
+- **产物：** 更新 `docs/STATE.md`、`docs/PROJECT.md`、`SKILLS.md`、`templates/skill-record/README.md`、`docs/DECISIONS.md`。
+- **验证：** 对照四个 Skill 任务卡均为 Completed、四个 `package/` 已存在、安装测试此前已通过；本轮未重跑安装测试。
+- **后续：** 无基建待办；按需新建 Skill、本机安装或做真实试跑。
+
+## 2026-09-12 — 确认工作区为 Skills 工坊
+
+- **任务：** `/bootstrap-workspace`，明确以后在此创建各类 Skills。
+- **结果：** 核心上下文已齐全，未重建脚手架；未新增 `inputs/` / `work/` / `outputs/`。更新 README、PROJECT、AGENTS、STATE、DECISIONS，把「新建 Skill」写进正式目标。
+- **产物：** 决策「本仓库作为长期 Skills 工坊」。
+- **验证：** `AGENTS.md` 引用路径均存在；Cursor 对 `AGENTS.md` 为 native；`python3 tests/test_install_skill.py -v` 本轮未重跑（结构未改安装逻辑）。
+- **后续：** 按模板新建 Skill；本机按需安装。
+
 ## 2026-09-12 — 其余三个 Skill 收成可安装包
 
 - **任务：** 让咨询、沟通复盘和记账也能从本仓库安装和迭代。

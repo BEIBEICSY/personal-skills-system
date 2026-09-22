@@ -122,7 +122,8 @@ def directory_map(profile: str) -> str:
         "- `docs/STATE.md`：当前进度、下一步与阻塞项。",
         "- `docs/HISTORY.md`：过去完成事项、结果和产物的简明索引。",
         "- `docs/DECISIONS.md`：重要决策及其理由。",
-        "- `docs/tasks/TEMPLATE.md`：较大任务的记录模板。",
+        "- `docs/tasks/INDEX.md`：任务总清单。",
+        "- `docs/tasks/TEMPLATE.md`：任务档案模板。",
     ]
     additions = {
         "scripts": "- `scripts/`：可复现的自动化脚本。",
@@ -171,7 +172,9 @@ def gitignore_rules(profile: str, sensitive_inputs: bool) -> str:
     return "\n".join(rules)
 
 
-def build_plan(args: argparse.Namespace, skill_root: Path) -> tuple[set[Path], list[PlannedFile]]:
+def build_plan(
+    args: argparse.Namespace, skill_root: Path, target: Path
+) -> tuple[set[Path], list[PlannedFile]]:
     project_name = require_text("project name", args.project_name)
     goal = require_text("goal", args.goal)
     inputs = require_text("inputs", args.inputs)
@@ -200,10 +203,18 @@ def build_plan(args: argparse.Namespace, skill_root: Path) -> tuple[set[Path], l
         Path("docs/STATE.md"): "STATE.md.tmpl",
         Path("docs/HISTORY.md"): "HISTORY.md.tmpl",
         Path("docs/DECISIONS.md"): "DECISIONS.md.tmpl",
-        Path("docs/tasks/TEMPLATE.md"): "TASK_TEMPLATE.md.tmpl",
     }
     if args.git_mode != "none":
         template_mapping[Path(".gitignore")] = "gitignore.tmpl"
+
+    template_mapping[Path("docs/tasks/TEMPLATE.md")] = "TASK_TEMPLATE.md.tmpl"
+    if (target / "AGENTS.md").exists():
+        template_mapping[Path("docs/tasks/INDEX.md")] = "INDEX_STUB.md.tmpl"
+    else:
+        template_mapping[Path("docs/tasks/INDEX.md")] = "INDEX.md.tmpl"
+        template_mapping[
+            Path(f"docs/tasks/{values['DATE']}-initialize-workspace.md")
+        ] = "INIT_TASK.md.tmpl"
 
     files = [
         PlannedFile(relative_path, render(read_template(skill_root, template_name), values))
@@ -302,7 +313,7 @@ def main() -> int:
         args = parse_args()
         target = resolve_target(args.target)
         skill_root = Path(__file__).resolve().parent.parent
-        directories, files = build_plan(args, skill_root)
+        directories, files = build_plan(args, skill_root, target)
         if args.dry_run:
             show_plan(target, directories, files)
         else:

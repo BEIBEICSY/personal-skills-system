@@ -2,6 +2,13 @@
 
 按日期倒序记录该 Skill 的重要试跑、更新、失败和修复。不保存聊天转录或私人原始数据。
 
+## 2026-09-22 — 初始化即带任务清单，并自动识别新任务
+
+- **任务：** 初始化时创建 `docs/tasks/INDEX.md` 和初始化任务档案；后续按工作目标续做或新建。
+- **结果：** 脚手架首次初始化写入清单与 init 任务；接管已有工作区只补 stub INDEX。`AGENTS.md` 与 `SKILL.md` 写入识别规则。
+- **验证：** `python3 tests/test_scaffold_workspace.py -v` 与 `python3 tests/test_install_skill.py -v` 通过。
+- **后续：** 按用户要求用 `scripts/install_skill.py` 更新本机 Cursor / Codex。
+
 ## 2026-09-12 — 收成可安装包
 
 - **任务：** 把本仓库设为权威来源，并提供安装/更新脚本。

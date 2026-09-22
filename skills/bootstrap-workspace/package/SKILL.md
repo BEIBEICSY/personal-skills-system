@@ -46,7 +46,9 @@ Always create only the missing core context:
 - `docs/STATE.md` for current state and next actions;
 - `docs/HISTORY.md` for a concise history of meaningful work outcomes;
 - `docs/DECISIONS.md` for durable decisions;
-- `docs/tasks/TEMPLATE.md` for task-level specifications.
+- `docs/tasks/INDEX.md` for the living task inventory;
+- `docs/tasks/TEMPLATE.md` for new task files;
+- `docs/tasks/YYYY-MM-DD-initialize-workspace.md` on first initialization only, when `AGENTS.md` is being created.
 
 Add `inputs/`, `work/`, `outputs/`, or `scripts/` only when the selected profile benefits from them. Do not impose generic `src/` or `tests/` directories on an established repository or an undecided code stack.
 
@@ -83,7 +85,8 @@ For an existing workspace:
 - point `AGENTS.md` to canonical existing documentation instead of copying it;
 - when adding `docs/HISTORY.md` to an older scaffold, review and minimally update existing `AGENTS.md` and `README.md` so they expose it without replacing user-authored content;
 - merge `.gitignore` rules only after inspecting the current file;
-- explain conflicts among instruction files and propose a single-source repair without deleting anything automatically.
+- explain conflicts among instruction files and propose a single-source repair without deleting anything automatically;
+- if `docs/tasks/INDEX.md` was just created as a stub, inventory existing `docs/tasks/*.md` files except `TEMPLATE.md`; mark unknown status as `Unverified` and do not invent an initialize-workspace task;
 
 Maintain `docs/HISTORY.md` as a compact, reverse-chronological index rather than a session transcript:
 
@@ -92,6 +95,20 @@ Maintain `docs/HISTORY.md` as a compact, reverse-chronological index rather than
 - link to detailed task records, decisions, outputs, or commits instead of copying them;
 - do not record routine conversation, private reasoning, raw prompts, or exploration with no durable result;
 - keep exact file-level history in Git when Git is in use.
+
+### Task tracking after initialization
+
+Before substantial work in a bootstrapped workspace, read `docs/tasks/INDEX.md` and `docs/STATE.md`, then decide:
+
+- Continue: the requested outcome matches an unfinished task (In progress or Paused). Open that file. Do not create a new file because the session changed.
+- Start: the requested outcome matches no unfinished task. Create `docs/tasks/YYYY-MM-DD-slug.md` from `TEMPLATE.md` with Progress `In progress`, add it to `INDEX.md`, and point `STATE.md` at it. Do not ask whether to create a task.
+- Unsure: ask one question naming the closest existing task; do not ask whether to create a task system.
+
+Match on the intended outcome, not the session, date, or wording. Multiple tasks may be in progress at once. Skip a task file for pure questions, chat, explaining existing files, or when the user says not to record one. Once files will change or a deliverable will be produced, the work must belong to a task.
+
+If the user says this continues prior work but no matching file exists, create one and note in Progress that it was created from a continuation request. If one request contains two independent outcomes, split them; create the primary task first and list the other in `INDEX.md` and `STATE.md` next actions.
+
+When completing a task, update the task file, move it to Completed in `INDEX.md`, and sync `STATE.md`. Keep it In progress when verification failed. Add `HISTORY.md` only for a meaningful outcome, and link the task file. If `INDEX.md` and the task file disagree, trust the task file and repair `INDEX.md` and `STATE.md`. Never write secrets, bills, therapy transcripts, or conversation transcripts into task files.
 
 ### 6. Check agent compatibility
 
@@ -111,6 +128,9 @@ Read [references/agent-compatibility.md](references/agent-compatibility.md) only
 Confirm that:
 
 - every path referenced by `AGENTS.md` exists;
+- `docs/tasks/INDEX.md` exists and `TEMPLATE.md` is not listed as a task;
+- a first-initialization workspace lists `docs/tasks/YYYY-MM-DD-initialize-workspace.md` as Completed;
+- `AGENTS.md` tells agents to identify whether a request continues an unfinished task or starts a new one;
 - `AGENTS.md` and the human-facing navigation expose `HISTORY.md` when no equivalent work-history index already exists;
 - `AGENTS.md` is concise and contains no duplicated project encyclopedia;
 - `PROJECT.md`, `STATE.md`, `HISTORY.md`, and `DECISIONS.md` have distinct responsibilities;

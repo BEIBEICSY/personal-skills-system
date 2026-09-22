@@ -1,6 +1,6 @@
 # 个人 Skills 总表
 
-最后核验：2026-09-12
+最后核验：2026-09-22
 
 本表是陈贝贝个人 Skills 管理仓库的全局索引。优先登记自己制作、深度定制或承担长期个人工作流的 Skills。详细维护信息以 `skills/<skill-id>/` 为准。第三方通用 Skills、插件和 MCP 可以作为依赖登记，但不自动算作“自己的 Skill”。
 
@@ -8,7 +8,7 @@
 
 | Skill | 场景分类 | 当前状态 | 权威来源 / 项目 | 当前安装入口 | 本轮核验 | 下一步 |
 |---|---|---|---|---|---|---|
-| [`bootstrap-workspace`](skills/bootstrap-workspace/) | 工作基础设施 / 工作区启动 | 已收包，可安装 | 本仓库 `skills/bootstrap-workspace/package/` | `~/.codex/skills/bootstrap-workspace/SKILL.md` | 安装测试通过；未覆盖直播安装 | 按需安装到 Cursor / Codex |
+| [`bootstrap-workspace`](skills/bootstrap-workspace/) | 工作基础设施 / 工作区启动 | 已收包，可安装 | 本仓库 `skills/bootstrap-workspace/package/` | Cursor `~/.cursor/skills/bootstrap-workspace/SKILL.md`；Codex `~/.codex/skills/bootstrap-workspace/SKILL.md` | 脚手架与安装测试通过；已覆盖本机 Cursor / Codex | 按工作目标自动建档，按需继续迭代 |
 | [`reviewing-therapy-transcripts`](skills/reviewing-therapy-transcripts/) | 个人支持 / 心理咨询复盘 | 已收包，可安装 | 本仓库 `skills/reviewing-therapy-transcripts/package/` | `~/.cursor/skills/reviewing-therapy-transcripts/SKILL.md` | 安装测试通过；未收录逐字稿 | 按需安装到 Cursor |
 | [`reviewing-important-conversations`](skills/reviewing-important-conversations/) | 个人支持 / 重要沟通复盘 | 已收包，可安装 | 本仓库 `skills/reviewing-important-conversations/package/` | `~/.cursor/skills/reviewing-important-conversations/SKILL.md` | 安装测试通过；含 `templates.md`，未收录沟通原文 | 按需安装到 Cursor |
 | [`bill-to-suishouji`](skills/bill-to-suishouji/) | 生活管理 / 个人记账 | 已收包，可安装 | 本仓库 `skills/bill-to-suishouji/package/` | `~/.codex/skills/bill-to-suishouji/SKILL.md` | 安装测试通过；未收录原始账单；未跑完整 unittest | 按需安装，并用本地工作台放账单 |
@@ -43,7 +43,8 @@
 
 ## 状态口径
 
-- `已安装，入口可读`：本轮已确认入口文件存在且可读取；不等于所有真实任务都已回归通过。
+- `已收包，可安装`：本仓库已有 `package/`，可通过 `scripts/install_skill.py` 安装或更新；不等于已覆盖直播安装目录，也不等于真实任务已回归。
+- `已安装，入口可读`：本轮已确认目标 Agent 安装入口存在且可读取；不等于所有真实任务都已回归通过。
 - `已验证`：除入口可读外，还完成了该 Skill 规定的测试或真实任务检查。
 - `待核验`：来自用户确认或历史记录，但本轮没有找到足够证据确认位置或可用性。
 - `失效`：已经确认当前入口、依赖或关键流程不可用，并记录了证据。

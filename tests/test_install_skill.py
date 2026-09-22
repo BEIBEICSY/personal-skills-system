@@ -7,6 +7,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from datetime import date
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -118,7 +119,12 @@ class InstallSkillTest(unittest.TestCase):
                 capture_output=True,
                 text=True,
             )
+            today = date.today().isoformat()
             self.assertIn("AGENTS.md", result.stdout)
+            self.assertIn("docs/tasks/INDEX.md", result.stdout)
+            self.assertIn(
+                f"docs/tasks/{today}-initialize-workspace.md", result.stdout
+            )
             self.assertFalse((workspace / "AGENTS.md").exists())
 
 

@@ -17,3 +17,9 @@
 **Decision:** {{PROFILE_DECISION}}
 
 **Reason:** Start with the smallest durable structure that matches the current work without guessing a technology stack or creating redundant folders.
+
+## {{DATE}} — Record work as tasks in docs/tasks
+
+**Decision:** Track each work task as a file under `docs/tasks/` and list it in `docs/tasks/INDEX.md`. Do not treat a chat session as the task boundary. The same task may span multiple sessions.
+
+**Reason:** Work needs to be resumable across agents and sessions without relying on chat memory or a user reminder to start a task list.

@@ -1,6 +1,6 @@
 # 陈贝贝个人 Skills 管理仓库
 
-这是陈贝贝个人 Skills 的统一管理入口，用来登记、核验、更新、安装、迁移和恢复自己已经跑通的 Skills。四个自制 Skill 都以 `skills/<id>/package/` 为权威来源。
+这是陈贝贝个人 Skills 的统一入口：以后新 Skill 也在这里创建、登记、收包和迭代；同时用于核验、安装、迁移和恢复已跑通的 Skills。已收包 Skill 都以 `skills/<id>/package/` 为权威来源。
 
 主版本源（私有）：https://github.com/BEIBEICSY/personal-skills-system
 
@@ -50,4 +50,4 @@ python3 scripts/install_skill.py bill-to-suishouji --host codex
 
 ## 开始工作
 
-先读 `docs/PROJECT.md`、`docs/STATE.md` 和 `SKILLS.md`。修改某个 Skill 前，再读取该 Skill 自己的维护档案、权威 `SKILL.md`、权威项目文档和相关测试。
+先读 `docs/PROJECT.md`、`docs/STATE.md` 和 `SKILLS.md`。新建 Skill 时复制 `templates/skill-record/`；修改已有 Skill 前，再读取该 Skill 的维护档案、权威 `SKILL.md` 和相关测试。

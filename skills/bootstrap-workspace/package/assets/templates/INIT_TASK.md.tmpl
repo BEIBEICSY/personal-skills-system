@@ -1,0 +1,45 @@
+# Task: Initialize workspace
+
+## Objective
+
+Establish durable, agent-neutral workspace context.
+
+## Inputs
+
+- User request for workspace initialization
+- Selected workspace profile and known project facts
+
+## Outputs
+
+- Core context files: `README.md`, `AGENTS.md`, `docs/PROJECT.md`, `docs/STATE.md`, `docs/HISTORY.md`, `docs/DECISIONS.md`, `docs/tasks/INDEX.md`, `docs/tasks/TEMPLATE.md`
+
+## Constraints
+
+- Create missing files only; do not overwrite existing user-authored files.
+- Do not write secrets, credentials, or private raw data into context documents.
+
+## Acceptance criteria
+
+- Every path referenced by `AGENTS.md` exists.
+- `docs/tasks/INDEX.md` lists this task as Completed.
+
+## Progress
+
+- Completed.
+- {{DATE}}: Scaffolded the initial workspace context.
+
+## Related sessions
+
+- {{DATE}}: Workspace initialization.
+
+## Related tasks
+
+- None.
+
+## Outcome
+
+- Created the initial project context, current-state, history, decision, and task-document structure.
+
+## Verification
+
+- Confirmed that the initial context documents reference existing paths.

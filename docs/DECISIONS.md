@@ -1,5 +1,17 @@
 # Decisions
 
+## 2026-09-22 — 工作区任务按工作目标建档，不以会话为边界
+
+**Decision:** `bootstrap-workspace` 初始化必须生成 `docs/tasks/INDEX.md`。之后 Agent 按工作目标自动续做或新建 `docs/tasks/YYYY-MM-DD-slug.md`，同一任务可跨会话。不按聊天会话建任务，也不再要求用户提醒「需要一个 task 记录清单」。
+
+**Reason:** 用户确认初始化后每次新工作任务都要自动记录；换会话继续同一件事时应更新原档案。
+
+## 2026-09-12 — 本仓库作为长期 Skills 工坊
+
+**Decision:** 以后各类个人 Skills 都在本工作区创建、登记、收包和迭代；不只管理已有四个 Skill。目录沿用现有 `skills/`、`templates/`、`scripts/`、`local/`，不额外引入通用 `inputs/` / `work/` / `outputs/`。
+
+**Reason:** 用户明确要把此工作区当作建 Skills 的长期入口；现有布局已覆盖创建与分发闭环。
+
 ## 2026-09-12 — 本仓库同时负责 Skill 包的迭代与安装更新
 
 **Decision:** 管理仓库不只保存清单。可分享的 Skill 以 `skills/<id>/package/` 为权威包；用 `scripts/install_skill.py` 安装或更新到各 Agent 的 Skills 目录。个人路径、Key 和私人原文仍不进仓库。
@@ -14,9 +26,11 @@
 
 ## 2026-09-12 — 采用一 Skill 一档案目录的混合型管理仓库
 
-**Decision:** 每个 Skill 在 `skills/<skill-id>/` 拥有独立维护档案；`SKILLS.md` 只做全局摘要。已有独立权威项目的 Skill 继续在原项目维护源码，本仓库不复制、不接管。
+**Decision:** 每个 Skill 在 `skills/<skill-id>/` 拥有独立维护档案；`SKILLS.md` 只做全局摘要。未收包 Skill 若仍有独立权威项目，继续在原项目维护源码，本仓库不自动复制、不接管。
 
 **Reason:** 仓库目标是 Skills 的管理和更新机制，不是源码单体仓。独立档案能体现分别维护，又避免与现有项目形成双份真相。
+
+**Clarification:** 已收包 Skill 的权威来源以本仓库 `package/` 为准，见下一条决策；本条只约束「未收包」情形。
 
 ## 2026-09-12 — 已收包的 Skill 以本仓库 package 为权威来源
 

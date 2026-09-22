@@ -23,8 +23,9 @@ Before making changes:
 
 ## Workspace boundaries
 
-- This workspace is the management index for personal Skills, and the source of truth for Skills that already have `skills/<id>/package/`.
-- Do not copy, relocate, edit, install, or uninstall a managed Skill unless the active task explicitly requires it.
+- This workspace is where personal Skills are created, registered, packaged, and maintained. It is also the source of truth for Skills that already have `skills/<id>/package/`.
+- Create or change a Skill only when the user's instruction or an active task requires it. Do not copy, relocate, install, or uninstall a managed Skill casually.
+- New Skills start from `templates/skill-record/`, live under `skills/<id>/`, put installable content in `package/` when ready, and register in `SKILLS.md`.
 - For a packaged Skill, edit `skills/<id>/package/` here, then install or update with `scripts/install_skill.py`. Do not treat a host install directory as the canonical source after packaging.
 - Keep personal finance records, psychological consultation content, important-conversation recordings or transcripts, credentials, tokens, and other private raw data out of this workspace.
 - Inventory credentials only by dependency type and storage location; never record secret values.

@@ -6,11 +6,11 @@
 
 ## Goal
 
-盘点、维护、验证、安装和迁移属于自己的 Skills，使个人 AI 能力可以持续迭代，并在更换 Agent、客户端、账号或电脑时恢复。四个自制 Skill 都以本仓库 `package/` 为权威来源；私人原文和账单仍留在本地工作台。
+在本仓库持续创建、登记、收包、验证、安装和迁移个人 Skills，使个人 AI 能力可以迭代，并在更换 Agent、客户端、账号或电脑时恢复。已收包 Skill 以本仓库 `package/` 为权威来源；私人原文和账单仍留在本地工作台。
 
 ## Workspace profile
 
-`code（代码与配置资产）`
+`mixed（代码脚本 + Skill 规则与维护档案）`
 
 ## Primary audience
 
@@ -31,14 +31,22 @@
 
 ## First milestone definition of done
 
-- 工作区启动、心理咨询、记账三个 Skill 都进入总表，并各有独立档案目录。
+状态：**已完成**（2026-09-12）。
+
+- 工作区启动、心理咨询、重要沟通、记账四个 Skill 都进入总表，并各有独立档案与可安装 `package/`。
+- 新增 Skill 有固定流程：复制 `templates/skill-record/` → 写入 `package/` → 登记 `SKILLS.md` → 用 `scripts/install_skill.py` 安装或更新。
 - 已找到的路径均经过存在性检查；未找到的项目明确标为 `待核验`。
 - 项目具有唯一的 `AGENTS.md`、明确的状态文件、决策记录和历史记录。
 - 不写入明文凭证、个人账单、心理咨询原始内容、重要沟通原文或其他敏感数据。
 
+## Steady-state operating mode
+
+第一里程碑之后，默认按运营节奏工作：无活跃基建任务时不新建脚手架；有新 Skill 或迭代需求时，走登记 → 收包 → 安装 → 验证闭环。私人原文与账单仍留在本地工作台。
+
 ## Scope boundaries
 
-- 本项目是个人 Skills 的管理中枢和已收包 Skill 的迭代入口；未明确收包的 Skill 不默认复制源码。
+- 本项目是个人 Skills 的创建与管理中枢，以及已收包 Skill 的权威迭代入口；未明确收包的 Skill 不默认复制源码。
 - 外部通用 Skill、插件和 MCP 作为依赖或候选资产管理，除非用户明确把它纳入个人定制范围。
-- 修改、迁移、安装或卸载具体 Skill，需要独立任务和验证。
+- 新建、修改、迁移、安装或卸载具体 Skill，需要独立任务和验证。
 - 不以聊天记忆作为权威记录。
+- 不使用通用 `inputs/` / `work/` / `outputs/` 目录；素材与交付物边界以 `skills/`、`templates/`、`scripts/`、`local/` 为准。

@@ -40,6 +40,7 @@ Ask one profile-specific follow-up only when it changes the initial structure:
 - Do not create `src/`, `tests/`, dependency files, or build configuration solely because the profile is `code`.
 - Record discovered commands and boundaries in `AGENTS.md`; link to detailed existing docs rather than duplicating them.
 - If the workspace has no reliable definition of done, record that it is not yet defined and ask before claiming completion criteria.
+- If `docs/tasks/` already contains task files, do not overwrite them. Create a missing `INDEX.md` only as a stub and inventory existing task files into it.
 
 ## Git policy
 
