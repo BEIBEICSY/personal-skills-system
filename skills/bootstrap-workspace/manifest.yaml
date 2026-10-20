@@ -35,7 +35,7 @@ sensitive_boundaries:
   - 不把未确认的敏感输入目录纳入版本控制。
   - package 中不写入本机绝对路径。
 verification:
-  last_checked: 2026-09-22
+  last_checked: 2026-10-20
   result: 安装脚本测试与脚手架测试通过
   notes: python3 tests/test_install_skill.py -v; python3 tests/test_scaffold_workspace.py -v
 restore:

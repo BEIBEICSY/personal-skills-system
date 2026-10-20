@@ -2,7 +2,7 @@
 
 ## 2026-09-22 — 工作区任务按工作目标建档，不以会话为边界
 
-**Decision:** `bootstrap-workspace` 初始化必须生成 `docs/tasks/INDEX.md`。之后 Agent 按工作目标自动续做或新建 `docs/tasks/YYYY-MM-DD-slug.md`，同一任务可跨会话。不按聊天会话建任务，也不再要求用户提醒「需要一个 task 记录清单」。
+**Decision:** `bootstrap-workspace` 初始化必须生成 `docs/tasks/INDEX.md`。之后 Agent 按工作目标自动续做或新建 `docs/tasks/YYMMDD-<task-description>.md`，同一任务可跨会话。文件名里的 `YYMMDD` 是开始日期，后面是当前任务的简短描述。不按聊天会话建任务，也不再要求用户提醒「需要一个 task 记录清单」。
 
 **Reason:** 用户确认初始化后每次新工作任务都要自动记录；换会话继续同一件事时应更新原档案。
 

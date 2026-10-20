@@ -39,6 +39,7 @@ Last updated: 2026-09-22
 
 ## Last verification
 
+- 2026-10-20：`python3 tests/test_scaffold_workspace.py -v` 通过（5 tests）；`python3 tests/test_install_skill.py -v` 通过（4 tests）。任务文件名改为 `YYMMDD-<task-description>`。
 - 2026-09-22：`python3 tests/test_scaffold_workspace.py -v` 通过（5 tests）。
 - 2026-09-22：`python3 tests/test_install_skill.py -v` 通过（4 tests）。
 - 2026-09-12：确认四个 Skill 的安装入口可读；`package/` 均已建立且无 `/Users/beibei`。

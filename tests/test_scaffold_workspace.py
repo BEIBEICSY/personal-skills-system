@@ -26,6 +26,11 @@ DO_NOT_ASK_FOR_SYSTEM = "do not ask whether to create a task system"
 OLD_MANUAL_TASK_STEP = (
     "Create a task specification under `docs/tasks/` before substantial work"
 )
+TASK_NAME_RULE = "YYMMDD-<task-description>"
+
+
+def compact_today() -> str:
+    return date.today().strftime("%y%m%d")
 
 
 def run_scaffold(workspace: Path, *, dry_run: bool = False) -> subprocess.CompletedProcess:
@@ -56,12 +61,13 @@ class ScaffoldWorkspaceTest(unittest.TestCase):
             workspace = Path(tmp) / "workspace"
             workspace.mkdir()
             result = run_scaffold(workspace, dry_run=True)
-            today = date.today().isoformat()
+            today = compact_today()
             self.assertIn("docs/tasks/INDEX.md", result.stdout)
             self.assertIn("docs/tasks/TEMPLATE.md", result.stdout)
             self.assertIn(
                 f"docs/tasks/{today}-initialize-workspace.md", result.stdout
             )
+            self.assertNotIn("-initialize-workspace.md", result.stdout.replace(f"{today}-initialize-workspace.md", ""))
             self.assertFalse((workspace / "docs" / "tasks" / "INDEX.md").exists())
 
     def test_fresh_write_creates_task_tracking_files(self) -> None:
@@ -69,7 +75,7 @@ class ScaffoldWorkspaceTest(unittest.TestCase):
             workspace = Path(tmp) / "workspace"
             workspace.mkdir()
             run_scaffold(workspace)
-            today = date.today().isoformat()
+            today = compact_today()
             index = workspace / "docs" / "tasks" / "INDEX.md"
             template = workspace / "docs" / "tasks" / "TEMPLATE.md"
             init_task = (
@@ -87,6 +93,8 @@ class ScaffoldWorkspaceTest(unittest.TestCase):
             self.assertIn(IDENTIFY_RULE, agents)
             self.assertIn(DO_NOT_ASK_FOR_SYSTEM, agents)
             self.assertIn("docs/tasks/INDEX.md", agents)
+            self.assertIn(TASK_NAME_RULE, agents)
+            self.assertNotIn("YYYY-MM-DD-slug.md", agents)
             self.assertNotIn(OLD_MANUAL_TASK_STEP, readme)
             self.assertIn("docs/tasks/INDEX.md", readme)
             self.assertNotIn("Create the first task specification", state)
@@ -102,7 +110,7 @@ class ScaffoldWorkspaceTest(unittest.TestCase):
             workspace.mkdir()
             (workspace / "AGENTS.md").write_text("# existing\n", encoding="utf-8")
             run_scaffold(workspace)
-            today = date.today().isoformat()
+            today = compact_today()
             index = workspace / "docs" / "tasks" / "INDEX.md"
             init_task = (
                 workspace / "docs" / "tasks" / f"{today}-initialize-workspace.md"
@@ -139,7 +147,9 @@ class ScaffoldWorkspaceTest(unittest.TestCase):
         self.assertIn("docs/tasks/INDEX.md", text)
         self.assertIn("continues an unfinished task or starts a new one", text)
         self.assertIn("do not ask whether to create a task system", text)
-        self.assertIn("YYYY-MM-DD-initialize-workspace.md", text)
+        self.assertIn("YYMMDD-initialize-workspace.md", text)
+        self.assertIn(TASK_NAME_RULE, text)
+        self.assertNotIn("YYYY-MM-DD-slug.md", text)
 
 
 if __name__ == "__main__":

@@ -13,7 +13,7 @@
 采用**任务清单 + 一任务一档案**：
 
 - `docs/tasks/INDEX.md` 是总清单。
-- 每个工作任务一份 `docs/tasks/YYYY-MM-DD-slug.md`。
+- 每个工作任务一份 `docs/tasks/YYMMDD-<task-description>.md`。
 - `STATE.md` 只指向当前进行中的任务，不替代清单。
 - `HISTORY.md` 只记录有结果的完成项，并链到任务档案。
 
@@ -27,7 +27,7 @@
 |---|---|
 | `docs/tasks/INDEX.md` | 任务总清单 |
 | `docs/tasks/TEMPLATE.md` | 新任务复制模板（已有） |
-| `docs/tasks/{{DATE}}-initialize-workspace.md` | 把「初始化工作区」写成已完成的第一条任务 |
+| `docs/tasks/{{DATE_COMPACT}}-initialize-workspace.md` | 把「初始化工作区」写成已完成的第一条任务 |
 
 `README.md` 的工作区地图增加 `docs/tasks/INDEX.md`。入门步骤从「开始干活前先自己建任务」改为：对照 `INDEX.md`；新任务自动建档，旧任务接着更新。
 
@@ -83,7 +83,7 @@ Living inventory of work tasks. Newest items first within each section. Do not c
 
 ## Completed
 
-- [Initialize workspace]({{DATE}}-initialize-workspace.md) — Establish durable, agent-neutral workspace context. Started {{DATE}}. Updated {{DATE}}.
+- [Initialize workspace]({{DATE_COMPACT}}-initialize-workspace.md) — Establish durable, agent-neutral workspace context. Started {{DATE}}. Updated {{DATE}}.
 
 ## Cancelled
 
@@ -96,7 +96,7 @@ Living inventory of work tasks. Newest items first within each section. Do not c
 
 ## 任务档案格式
 
-文件名：`docs/tasks/YYYY-MM-DD-slug.md`。`slug` 用小写英文或拼音短横线，在创建时确定。同一任务换会话不改文件名、不复制新文件。
+文件名：`docs/tasks/YYMMDD-<task-description>.md`。`YYMMDD` 是任务开始日期（`%y%m%d`）；`<task-description>` 是当前任务的简短描述，可用用户语言，空格改成短横线，去掉 `/\:*?"<>|`。同一任务换会话不改文件名、不复制新文件。
 
 在现有 `TASK_TEMPLATE.md.tmpl` 上增加两节，其余保留：
 
@@ -136,7 +136,7 @@ Source-of-truth 顺序不变：用户当前指令仍高于活跃任务规格。
 
 区分两种写入：
 
-1. **首次初始化**（本次会新建 `AGENTS.md`）：创建 `INDEX.md`、`TEMPLATE.md`、以及 `{{DATE}}-initialize-workspace.md`。INDEX 的 Completed 中包含该初始化任务。
+1. **首次初始化**（本次会新建 `AGENTS.md`）：创建 `INDEX.md`、`TEMPLATE.md`、以及 `{{DATE_COMPACT}}-initialize-workspace.md`。INDEX 的 Completed 中包含该初始化任务。
 2. **接管已有工作区**（`AGENTS.md` 已存在，因而会被 skip）：不创建「刚刚初始化」这种任务。若 `INDEX.md` 缺失，写入空分组清单，并在文首用英文注明由 Agent 将已有 `docs/tasks/*.md`（排除 `TEMPLATE.md`）收进清单；认不出的状态标为 `Unverified`，不擅自写成 In progress 或 Completed。`Unverified` 项可暂时放在 Completed 组之前的独立小节，盘点完成后再移入四态之一。
 
 `directory_map()` 增加 `docs/tasks/INDEX.md` 一行。
@@ -173,7 +173,7 @@ Source-of-truth 顺序不变：用户当前指令仍高于活跃任务规格。
 ## 验证
 
 1. `python3 tests/test_install_skill.py -v` 继续通过。
-2. 安装后的脚手架对空目录 `--dry-run` 与实际写入，输出/产物包含 `docs/tasks/INDEX.md`、`docs/tasks/TEMPLATE.md`、`docs/tasks/当天日期-initialize-workspace.md`。
+2. 安装后的脚手架对空目录 `--dry-run` 与实际写入，输出/产物包含 `docs/tasks/INDEX.md`、`docs/tasks/TEMPLATE.md`、`docs/tasks/YYMMDD-initialize-workspace.md`。
 3. 写入结果中，`AGENTS.md` 含对照清单识别新开/续做的规则，且不含「开始干活前先自己建任务」。
 4. 对已有 `AGENTS.md` 的目录运行脚手架：已有文件不被覆盖；不新增 initialize-workspace 任务；若缺 INDEX 则补空清单。
 5. 模板渲染后无未替换占位符；package 内仍无本机绝对路径。

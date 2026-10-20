@@ -119,7 +119,7 @@ class InstallSkillTest(unittest.TestCase):
                 capture_output=True,
                 text=True,
             )
-            today = date.today().isoformat()
+            today = date.today().strftime("%y%m%d")
             self.assertIn("AGENTS.md", result.stdout)
             self.assertIn("docs/tasks/INDEX.md", result.stdout)
             self.assertIn(

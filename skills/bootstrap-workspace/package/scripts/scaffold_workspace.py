@@ -193,6 +193,7 @@ def build_plan(
         "PROFILE_DECISION": profile_decision(args.profile),
         "PROFILE_IGNORE_RULES": gitignore_rules(args.profile, args.sensitive_inputs),
         "DATE": date.today().isoformat(),
+        "DATE_COMPACT": date.today().strftime("%y%m%d"),
         "GIT_MODE": args.git_mode,
     }
 
@@ -213,7 +214,7 @@ def build_plan(
     else:
         template_mapping[Path("docs/tasks/INDEX.md")] = "INDEX.md.tmpl"
         template_mapping[
-            Path(f"docs/tasks/{values['DATE']}-initialize-workspace.md")
+            Path(f"docs/tasks/{values['DATE_COMPACT']}-initialize-workspace.md")
         ] = "INIT_TASK.md.tmpl"
 
     files = [

@@ -2,6 +2,13 @@
 
 按日期倒序记录该 Skill 的重要试跑、更新、失败和修复。不保存聊天转录或私人原始数据。
 
+## 2026-10-20 — 任务文件名改为 YYMMDD-任务描述
+
+- **任务：** 约束任务档案命名为 `YYMMDD-<task-description>`，描述取当前任务摘要。
+- **结果：** 脚手架初始化任务与 `AGENTS.md` / `SKILL.md` 均改为该格式，不再使用 `YYYY-MM-DD-slug`。
+- **验证：** `python3 tests/test_scaffold_workspace.py -v` 与 `python3 tests/test_install_skill.py -v`。
+- **后续：** 用安装脚本覆盖本机 Cursor / Codex。
+
 ## 2026-09-22 — 初始化即带任务清单，并自动识别新任务
 
 - **任务：** 初始化时创建 `docs/tasks/INDEX.md` 和初始化任务档案；后续按工作目标续做或新建。

@@ -2,10 +2,17 @@
 
 这是个人 Skills 系统的重要成果索引，按时间倒序维护。只记录可复用的结果、验证和关键失败，不保存聊天转录或私人原始数据。
 
+## 2026-10-20 — 任务档案命名改为 YYMMDD-任务描述
+
+- **任务：** 约束 `bootstrap-workspace` 新建任务文件名为 `YYMMDD-<当前任务描述>`。
+- **结果：** 不再使用 `YYYY-MM-DD-slug`；初始化任务为 `YYMMDD-initialize-workspace.md`。
+- **验证：** 脚手架与安装测试。
+- **后续：** 覆盖本机 Cursor / Codex 安装。
+
 ## 2026-09-22 — bootstrap-workspace 增加任务清单与自动建档
 
 - **任务：** [规格](superpowers/specs/2026-09-22-bootstrap-workspace-task-tracking-design.md)；[计划](superpowers/plans/2026-09-22-bootstrap-workspace-task-tracking.md)。
-- **结果：** 首次初始化写入 `docs/tasks/INDEX.md` 和 initialize-workspace 任务；接管已有工作区只补 stub。生成的 `AGENTS.md` 要求按工作目标续做或新建任务。
+- **结果：** 首次初始化写入 `docs/tasks/INDEX.md` 和 `YYMMDD-initialize-workspace` 任务；接管已有工作区只补 stub。生成的 `AGENTS.md` 要求按工作目标续做或新建 `YYMMDD-<task-description>` 任务。
 - **产物：** `skills/bootstrap-workspace/package/` 模板与脚手架、`tests/test_scaffold_workspace.py`。
 - **验证：** `python3 tests/test_scaffold_workspace.py -v` 与 `python3 tests/test_install_skill.py -v` 通过。
 - **后续：** 本机 Cursor / Codex 按用户要求用安装脚本覆盖；不把本仓库自身改造成新模板示例。

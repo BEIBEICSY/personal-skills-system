@@ -48,7 +48,7 @@ Always create only the missing core context:
 - `docs/DECISIONS.md` for durable decisions;
 - `docs/tasks/INDEX.md` for the living task inventory;
 - `docs/tasks/TEMPLATE.md` for new task files;
-- `docs/tasks/YYYY-MM-DD-initialize-workspace.md` on first initialization only, when `AGENTS.md` is being created.
+- `docs/tasks/YYMMDD-initialize-workspace.md` on first initialization only, when `AGENTS.md` is being created.
 
 Add `inputs/`, `work/`, `outputs/`, or `scripts/` only when the selected profile benefits from them. Do not impose generic `src/` or `tests/` directories on an established repository or an undecided code stack.
 
@@ -101,7 +101,7 @@ Maintain `docs/HISTORY.md` as a compact, reverse-chronological index rather than
 Before substantial work in a bootstrapped workspace, read `docs/tasks/INDEX.md` and `docs/STATE.md`, then decide:
 
 - Continue: the requested outcome matches an unfinished task (In progress or Paused). Open that file. Do not create a new file because the session changed.
-- Start: the requested outcome matches no unfinished task. Create `docs/tasks/YYYY-MM-DD-slug.md` from `TEMPLATE.md` with Progress `In progress`, add it to `INDEX.md`, and point `STATE.md` at it. Do not ask whether to create a task.
+- Start: the requested outcome matches no unfinished task. Create `docs/tasks/YYMMDD-<task-description>.md` from `TEMPLATE.md` with Progress `In progress`, add it to `INDEX.md`, and point `STATE.md` at it. Do not ask whether to create a task. `YYMMDD` is the start date (`%y%m%d`). `<task-description>` is a short summary of the current task in the user's language; replace spaces with hyphens and strip `/\:*?"<>|`. Do not use `YYYY-MM-DD-slug`. Do not rename the file when continuing a task.
 - Unsure: ask one question naming the closest existing task; do not ask whether to create a task system.
 
 Match on the intended outcome, not the session, date, or wording. Multiple tasks may be in progress at once. Skip a task file for pure questions, chat, explaining existing files, or when the user says not to record one. Once files will change or a deliverable will be produced, the work must belong to a task.
@@ -129,7 +129,8 @@ Confirm that:
 
 - every path referenced by `AGENTS.md` exists;
 - `docs/tasks/INDEX.md` exists and `TEMPLATE.md` is not listed as a task;
-- a first-initialization workspace lists `docs/tasks/YYYY-MM-DD-initialize-workspace.md` as Completed;
+- a first-initialization workspace lists `docs/tasks/YYMMDD-initialize-workspace.md` as Completed;
+- new task files use `YYMMDD-<task-description>.md`;
 - `AGENTS.md` tells agents to identify whether a request continues an unfinished task or starts a new one;
 - `AGENTS.md` and the human-facing navigation expose `HISTORY.md` when no equivalent work-history index already exists;
 - `AGENTS.md` is concise and contains no duplicated project encyclopedia;
