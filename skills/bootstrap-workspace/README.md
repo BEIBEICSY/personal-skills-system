@@ -33,6 +33,12 @@ python3 scripts/install_skill.py bootstrap-workspace --host codex
 python3 scripts/install_skill.py bootstrap-workspace --host cursor --dry-run
 ```
 
+## 版本与发布
+
+- 当前版本见 [`package/VERSION`](package/VERSION)，各版改动见 [`package/CHANGELOG.md`](package/CHANGELOG.md)。
+- 每次使用时，Skill 先运行 `scripts/check_update.py`，用 Git 读取 GitHub `main` 上的版本；有新版时提示用户更新内容和命令，不自动更新。
+- 改 `package/` 必须同时升 `VERSION`、在 CHANGELOG 顶部加一条、同步 `manifest.yaml` 的 `version`；推送到 `main` 即发布。`python3 tests/test_check_update.py -v` 会校验三处一致。
+
 ## 导航
 
 - 全局索引：[`SKILLS.md`](../../SKILLS.md)

@@ -121,10 +121,11 @@ class InstallSkillTest(unittest.TestCase):
             )
             today = date.today().strftime("%y%m%d")
             self.assertIn("AGENTS.md", result.stdout)
-            self.assertIn("docs/tasks/INDEX.md", result.stdout)
+            self.assertIn("tasks/INDEX.md", result.stdout)
             self.assertIn(
-                f"docs/tasks/{today}-initialize-workspace.md", result.stdout
+                f"tasks/{today}-initialize-workspace/TASK.md", result.stdout
             )
+            self.assertNotIn("docs/tasks", result.stdout)
             self.assertFalse((workspace / "AGENTS.md").exists())
 
 

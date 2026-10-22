@@ -27,6 +27,7 @@ Before making changes:
 - Create or change a Skill only when the user's instruction or an active task requires it. Do not copy, relocate, install, or uninstall a managed Skill casually.
 - New Skills start from `templates/skill-record/`, live under `skills/<id>/`, put installable content in `package/` when ready, and register in `SKILLS.md`.
 - For a packaged Skill, edit `skills/<id>/package/` here, then install or update with `scripts/install_skill.py`. Do not treat a host install directory as the canonical source after packaging.
+- When a package has `VERSION`, every change to that package bumps it (`MAJOR.MINOR.PATCH`), adds a newest-first entry to `package/CHANGELOG.md`, and sets the same `version` in `manifest.yaml`. Pushing to `main` publishes the version; installed copies compare themselves against `main` with `package/scripts/check_update.py`.
 - Keep personal finance records, psychological consultation content, important-conversation recordings or transcripts, credentials, tokens, and other private raw data out of this workspace.
 - Inventory credentials only by dependency type and storage location; never record secret values.
 - Record uncertainty explicitly. A user-confirmed Skill with an unverified path must remain marked `待核验`.

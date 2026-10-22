@@ -2,6 +2,22 @@
 
 这是个人 Skills 系统的重要成果索引，按时间倒序维护。只记录可复用的结果、验证和关键失败，不保存聊天转录或私人原始数据。
 
+## 2026-10-22 — bootstrap-workspace 0.3.0 增加使用前更新检查
+
+- **任务：** [任务档案](tasks/261022-bootstrap-workspace-更新检查.md)。
+- **结果：** Skill 每次使用先对比本机与 GitHub `main` 的版本，有新版时提示版本、改动与更新命令；本仓库 `AGENTS.md` 增加发版纪律。
+- **产物：** `package/VERSION`、`CHANGELOG.md`、`update.json`、`scripts/check_update.py`；`tests/test_check_update.py`。
+- **验证：** 更新检查 7 passed、脚手架 8 passed、安装 4 passed；真实私有仓库可访问。
+- **后续：** 推送后版本比较才生效；跑通后推广到其他已收包 Skill。
+
+## 2026-10-22 — bootstrap-workspace 改为任务文件夹结构
+
+- **任务：** [任务档案](tasks/261022-bootstrap-workspace-任务文件夹结构.md)；[设计](superpowers/specs/2026-10-22-bootstrap-workspace-task-folders-design.md)。
+- **结果：** 新工作区按「一件事一个文件夹」组织：`tasks/YYMMDD-任务描述/` 内含 `TASK.md`、`inputs/`、`work/`、`outputs/`，共用资料放 `shared/`；跟进已完成任务时询问新建还是续记；旧布局工作区只提示迁移。
+- **产物：** `skills/bootstrap-workspace/package/` 的 `SKILL.md`、脚手架、模板与 profile 参考；两份测试。
+- **验证：** 脚手架测试 8 passed，安装测试 4 passed；评级工作区 dry-run 正确识别旧布局，未写入。
+- **后续：** 已安装到本机 Cursor / Codex；评级工作区已按用户确认的对照表迁移为 14 个任务文件夹，文件无缺失、哈希一致。待在真实工作中试跑「跟进已完成任务」询问规则。
+
 ## 2026-10-20 — 任务档案命名改为 YYMMDD-任务描述
 
 - **任务：** 约束 `bootstrap-workspace` 新建任务文件名为 `YYMMDD-<当前任务描述>`。

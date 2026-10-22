@@ -13,13 +13,15 @@ from pathlib import Path
 PROFILE_DIRECTORIES = {
     "minimal": (),
     "code": ("scripts",),
-    "data": ("inputs", "work", "outputs", "scripts"),
-    "research": ("inputs", "work", "outputs"),
-    "content": ("inputs", "work", "outputs"),
-    "mixed": ("inputs", "work", "outputs", "scripts"),
+    "data": ("shared", "scripts"),
+    "research": ("shared",),
+    "content": ("shared",),
+    "mixed": ("shared", "scripts"),
 }
 
 ARTIFACT_PROFILES = {"data", "research", "content", "mixed"}
+
+LEGACY_PATHS = (Path("docs/tasks"), Path("inputs"), Path("work"), Path("outputs"))
 
 PROFILE_LABELS = {
     "minimal": "minimal（仅上下文）",
@@ -118,47 +120,63 @@ def directory_map(profile: str) -> str:
     rows = [
         "- `AGENTS.md`：所有 Agent 共用的入口、边界和工作规则。",
         "- `README.md`：给人看的项目入口。",
-        "- `docs/PROJECT.md`：项目目标、范围、输入和交付物。",
-        "- `docs/STATE.md`：当前进度、下一步与阻塞项。",
-        "- `docs/HISTORY.md`：过去完成事项、结果和产物的简明索引。",
-        "- `docs/DECISIONS.md`：重要决策及其理由。",
-        "- `docs/tasks/INDEX.md`：任务总清单。",
-        "- `docs/tasks/TEMPLATE.md`：任务档案模板。",
+        "- `docs/`：项目说明书，记录这个项目是什么、做到哪了。",
+        "  - `PROJECT.md`：长期目标、范围、输入和交付物，基本不变。",
+        "  - `STATE.md`：现在做到哪、下一步、阻塞项，经常更新。",
+        "  - `HISTORY.md`：做完了什么的简明流水账。",
+        "  - `DECISIONS.md`：定下来的规矩及理由。",
     ]
-    additions = {
-        "scripts": "- `scripts/`：可复现的自动化脚本。",
-        "inputs": "- `inputs/`：原始输入；默认视为只读。",
-        "work": "- `work/`：可再生成的中间产物。",
-        "outputs": "- `outputs/`：最终或可交付成果。",
-    }
-    rows.extend(additions[name] for name in PROFILE_DIRECTORIES[profile])
+    if "shared" in PROFILE_DIRECTORIES[profile]:
+        rows.append("- `shared/`：多个任务共用的资料（标准、基线、模板），只读，只存一份。")
+    if "scripts" in PROFILE_DIRECTORIES[profile]:
+        rows.append("- `scripts/`：可复现的自动化脚本。")
+    rows.extend(
+        [
+            "- `tasks/`：一件事一个文件夹。",
+            "  - `INDEX.md`：所有任务的清单（进行中 / 已完成）。",
+            "  - `TEMPLATE.md`：任务档案模板。",
+            "  - `<YYMMDD-任务描述>/TASK.md`：这件事的目标、用到的资料、进展、产物和验证。",
+            "  - `<YYMMDD-任务描述>/inputs/`：这件事拿到的原件，只读。",
+            "  - `<YYMMDD-任务描述>/work/`：过程稿，可以乱，可再生成。",
+            "  - `<YYMMDD-任务描述>/outputs/`：要拿去用或发出去的成品。",
+            "",
+            "文件放哪：别人给的、不该改的放 `inputs/`；要拿去用或发出去的放 `outputs/`；"
+            "其余过程文件放 `work/`。都放在所属任务的文件夹里。",
+        ]
+    )
     return "\n".join(rows)
 
 
 def directory_rules(profile: str) -> str:
-    rules = []
-    if "inputs" in PROFILE_DIRECTORIES[profile]:
-        rules.append("- 不修改 `inputs/` 中的原始材料；需要清洗或转换时写入 `work/`。")
-    if "work" in PROFILE_DIRECTORIES[profile]:
-        rules.append("- `work/` 中只放可重建的中间产物，不把它当作唯一事实来源。")
-    if "outputs" in PROFILE_DIRECTORIES[profile]:
-        rules.append("- 最终交付物写入 `outputs/`，并在 `docs/STATE.md` 标注状态。")
+    rules = [
+        "- 每个任务的原件、过程稿和成品都放在 `tasks/<YYMMDD-任务描述>/` 下；"
+        "子目录 `inputs/`、`work/`、`outputs/` 有文件要放时再建。",
+        "- 不修改任务 `inputs/` 中的原件；清洗或转换写入同任务 `work/`。",
+        "- `work/` 只放可重建的过程文件，不当作唯一事实来源。",
+        "- 成品命名为 `outputs/<deliverable>-<草稿|定稿>.<ext>`，保留旧版时加 `-v<N>`；"
+        "状态变化时重命名并同步 `TASK.md` 中的链接。",
+    ]
+    if "shared" in PROFILE_DIRECTORIES[profile]:
+        rules.append(
+            "- 跨任务共用资料放 `shared/`，只读；任务在 `TASK.md` 中引用其路径，不复制。"
+            "其他任务的原件用相对路径引用；是否提升到 `shared/` 先问用户。"
+        )
     if "scripts" in PROFILE_DIRECTORIES[profile]:
         rules.append("- 重复执行的步骤优先沉淀到 `scripts/`，并写明运行方式。")
-    if not rules:
-        rules.append("- 新增目录前先确认其长期用途，避免为了模板完整而制造空结构。")
     return "\n".join(rules)
 
 
 def profile_decision(profile: str) -> str:
     if profile in ARTIFACT_PROFILES:
         return (
-            "采用原始输入、中间过程和最终交付物分离的结构：`inputs/` 保留原始材料，"
-            "`work/` 存放可再生成的过程文件，`outputs/` 存放交付物。"
+            "按任务组织产物：每件事一个 `tasks/<YYMMDD-任务描述>/` 文件夹，"
+            "内含 `TASK.md`、`inputs/`（原件）、`work/`（过程稿）和 `outputs/`（成品）；"
+            "跨任务共用资料放 `shared/`。"
         )
     if profile == "code":
         return (
-            "当前只预建 `scripts/`，不在不了解技术栈时猜测 `src/`、`tests/` 或依赖结构。"
+            "当前只预建 `scripts/`，不在不了解技术栈时猜测 `src/`、`tests/` 或依赖结构；"
+            "任务档案放 `tasks/<YYMMDD-任务描述>/TASK.md`。"
         )
     return "先采用最小上下文结构；仅在实际工作需要时增加业务目录。"
 
@@ -166,15 +184,21 @@ def profile_decision(profile: str) -> str:
 def gitignore_rules(profile: str, sensitive_inputs: bool) -> str:
     rules = []
     if profile in ARTIFACT_PROFILES:
-        rules.extend(("work/**", "!work/.gitkeep"))
-    if sensitive_inputs and "inputs" in PROFILE_DIRECTORIES[profile]:
-        rules.extend(("inputs/**", "!inputs/.gitkeep"))
+        rules.append("tasks/*/work/")
+    if sensitive_inputs:
+        rules.append("tasks/*/inputs/")
+        if "shared" in PROFILE_DIRECTORIES[profile]:
+            rules.extend(("shared/**", "!shared/.gitkeep"))
     return "\n".join(rules)
+
+
+def legacy_paths(target: Path) -> list[Path]:
+    return [path for path in LEGACY_PATHS if (target / path).exists()]
 
 
 def build_plan(
     args: argparse.Namespace, skill_root: Path, target: Path
-) -> tuple[set[Path], list[PlannedFile]]:
+) -> tuple[set[Path], list[PlannedFile], list[str]]:
     project_name = require_text("project name", args.project_name)
     goal = require_text("goal", args.goal)
     inputs = require_text("inputs", args.inputs)
@@ -208,29 +232,42 @@ def build_plan(
     if args.git_mode != "none":
         template_mapping[Path(".gitignore")] = "gitignore.tmpl"
 
-    template_mapping[Path("docs/tasks/TEMPLATE.md")] = "TASK_TEMPLATE.md.tmpl"
-    if (target / "AGENTS.md").exists():
-        template_mapping[Path("docs/tasks/INDEX.md")] = "INDEX_STUB.md.tmpl"
+    notices: list[str] = []
+    legacy = legacy_paths(target)
+    profile_directories = {Path(name) for name in PROFILE_DIRECTORIES[args.profile]}
+    directories = {Path("docs")}
+
+    if legacy:
+        found = ", ".join(f"{path}/" for path in legacy)
+        notices.append(
+            f"Legacy layout detected ({found}); skipped tasks/ and shared/. "
+            "Propose an old-path to new-path migration table and move files only "
+            "after the user confirms."
+        )
+        profile_directories.discard(Path("shared"))
     else:
-        template_mapping[Path("docs/tasks/INDEX.md")] = "INDEX.md.tmpl"
-        template_mapping[
-            Path(f"docs/tasks/{values['DATE_COMPACT']}-initialize-workspace.md")
-        ] = "INIT_TASK.md.tmpl"
+        directories.add(Path("tasks"))
+        template_mapping[Path("tasks/TEMPLATE.md")] = "TASK_TEMPLATE.md.tmpl"
+        if (target / "AGENTS.md").exists():
+            template_mapping[Path("tasks/INDEX.md")] = "INDEX_STUB.md.tmpl"
+        else:
+            template_mapping[Path("tasks/INDEX.md")] = "INDEX.md.tmpl"
+            init_dir = Path("tasks") / f"{values['DATE_COMPACT']}-initialize-workspace"
+            directories.add(init_dir)
+            template_mapping[init_dir / "TASK.md"] = "INIT_TASK.md.tmpl"
 
     files = [
         PlannedFile(relative_path, render(read_template(skill_root, template_name), values))
         for relative_path, template_name in template_mapping.items()
     ]
 
-    directories = {Path("docs"), Path("docs/tasks")}
-    profile_directories = {Path(name) for name in PROFILE_DIRECTORIES[args.profile]}
     directories.update(profile_directories)
 
     if args.git_mode != "none":
         for relative_dir in profile_directories:
             files.append(PlannedFile(relative_dir / ".gitkeep", ""))
 
-    return directories, files
+    return directories, files, notices
 
 
 def assert_safe_destination(root: Path, relative_path: Path) -> Path:
@@ -314,11 +351,13 @@ def main() -> int:
         args = parse_args()
         target = resolve_target(args.target)
         skill_root = Path(__file__).resolve().parent.parent
-        directories, files = build_plan(args, skill_root, target)
+        directories, files, notices = build_plan(args, skill_root, target)
         if args.dry_run:
             show_plan(target, directories, files)
         else:
             apply_plan(target, directories, files)
+        for notice in notices:
+            print(f"Notice: {notice}")
         return 0
     except (OSError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)

@@ -1,5 +1,17 @@
 # Decisions
 
+## 2026-10-22 — 已收包 Skill 以 VERSION 发版，使用前对比 GitHub main
+
+**Decision:** 带 `package/VERSION` 的 Skill 每次改包都升版本、写 CHANGELOG、同步 manifest；推送到 `main` 即发布。Skill 每次使用先运行 `check_update.py`，通过 Git 和用户已有凭据读取 `main` 上的版本，有新版时提示版本、改动和更新命令，不自动更新，检查失败不阻塞。先在 `bootstrap-workspace` 落地，跑通后再推广。
+
+**Reason:** 用户希望每次使用都能知道是否有新版及新版内容；仓库私有，`gh` 未必登录，Git 凭据是本机与有权限朋友都具备的最小依赖。
+
+## 2026-10-22 — 工作区先按任务分，再在任务内分 inputs/work/outputs
+
+**Decision:** `bootstrap-workspace` 生成的工作区以 `tasks/YYMMDD-<task-description>/` 为单位组织工作，内含 `TASK.md` 与按需创建的 `inputs/`、`work/`、`outputs/`；不再建顶层 `inputs/`、`work/`、`outputs/` 和 `docs/tasks/`。跨任务资料放 `shared/`。成品命名 `<deliverable>-<草稿|定稿>`。跟进已完成任务时询问用户新建还是续记。已有旧布局的工作区先出迁移对照表，用户确认后才移动。本仓库自身的 `docs/tasks/` 不随之迁移。
+
+**Reason:** 按类型横向切分导致同一件事散在三处、命名各异，用户难以把任务、原件和成品对上；用户明确要求按任务组织。
+
 ## 2026-09-22 — 工作区任务按工作目标建档，不以会话为边界
 
 **Decision:** `bootstrap-workspace` 初始化必须生成 `docs/tasks/INDEX.md`。之后 Agent 按工作目标自动续做或新建 `docs/tasks/YYMMDD-<task-description>.md`，同一任务可跨会话。文件名里的 `YYMMDD` 是开始日期，后面是当前任务的简短描述。不按聊天会话建任务，也不再要求用户提醒「需要一个 task 记录清单」。

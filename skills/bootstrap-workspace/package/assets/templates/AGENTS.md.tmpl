@@ -7,12 +7,31 @@ Before making changes:
 1. Read `README.md`.
 2. Read `docs/PROJECT.md` for stable goals and scope.
 3. Read `docs/STATE.md` for current progress, next actions, and blockers.
-4. Read `docs/tasks/INDEX.md` and identify whether this request continues an unfinished task or starts a new one.
-5. If it continues an unfinished task, read that task file. If it is a new work task, create `docs/tasks/YYMMDD-<task-description>.md` from `docs/tasks/TEMPLATE.md`, add it to `INDEX.md`, and point `docs/STATE.md` at it before doing substantial work. `YYMMDD` is the start date; `<task-description>` is a short summary of the current task. Replace spaces with hyphens and strip `/\:*?"<>|`. Do not use `YYYY-MM-DD-slug`. Do not rename a file when continuing a task. If unsure, ask one question naming the closest existing task; do not ask whether to create a task system.
+4. Read `tasks/INDEX.md` and identify whether this request continues an unfinished task or starts a new one.
+5. Pick the task folder before doing substantial work:
+   - Continues an unfinished task (In progress or Paused): open its `tasks/<id>/TASK.md` and continue there without asking.
+   - Follows up a Completed task: ask whether to start a new task folder or continue recording in the existing one. If continuing, set it back to In progress and log the date and reason in Progress. If new, link the old task under Related tasks.
+   - New work: create the folder `tasks/YYMMDD-<task-description>/` with `TASK.md` copied from `tasks/TEMPLATE.md`, add it to `tasks/INDEX.md`, and point `docs/STATE.md` at it. `YYMMDD` is the start date; `<task-description>` is a short summary in the user's language. Replace spaces with hyphens and strip `/\:*?"<>|`. Do not use `YYYY-MM-DD-slug`. Do not rename a folder when continuing a task.
+   - Unsure: ask one question naming the closest existing task; do not ask whether to create a task system.
 6. When resuming prior work or when current context is insufficient, read the newest relevant entries in `docs/HISTORY.md`.
 7. If this is a Git workspace, inspect current status and preserve existing user changes.
 
 Match on the intended outcome, not the session, date, or wording. The same task may span multiple sessions. Multiple tasks may be in progress at once. Do not create a task for pure questions, chat, explaining existing files, or when the user says not to record one. Once files will change or a deliverable will be produced, the work must belong to a task.
+
+## Task folders
+
+Each task keeps everything in its own folder; create a subfolder only when there is a file to put in it:
+
+```text
+tasks/YYMMDD-<task-description>/
+├── TASK.md     objective, inputs used, progress, outputs, verification
+├── inputs/     originals received for this task; read-only
+├── work/       intermediate drafts; reproducible
+└── outputs/    deliverables named <deliverable>-<草稿|定稿>.<ext>
+```
+
+- Add `-v<N>` before the status when an older version must be kept, for example `V3修改建议-v2-草稿.md`. Rename on status change and update links in `TASK.md`.
+- List every input and output path in `TASK.md`. Reference shared or other tasks' files by relative path instead of copying them.
 
 ## Source-of-truth order
 
@@ -44,7 +63,7 @@ Before reporting completion:
 
 1. Run the smallest relevant validation that actually exists.
 2. Review the changed-file scope.
-3. Update the active task file, `docs/tasks/INDEX.md`, and `docs/STATE.md` when progress changed. If verification failed, keep the task In progress, record the gap, and do not mark it Completed.
+3. Update the active `TASK.md`, `tasks/INDEX.md`, and `docs/STATE.md` when progress changed. If verification failed, keep the task In progress, record the gap, and do not mark it Completed.
 4. When the work produced a meaningful outcome or reusable finding, add one concise entry to `docs/HISTORY.md` and link the task file; do not log routine conversation or private reasoning.
 5. Record durable decisions in `docs/DECISIONS.md`.
 6. Report changed files, verification results, unrun checks, and remaining issues.

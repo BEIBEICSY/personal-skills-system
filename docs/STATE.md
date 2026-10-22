@@ -1,6 +1,6 @@
 # Current state
 
-Last updated: 2026-09-22
+Last updated: 2026-10-22
 
 ## Phase
 
@@ -20,6 +20,7 @@ Last updated: 2026-09-22
 - 创建 GitHub 私有远程仓库并推送 `main`：`https://github.com/BEIBEICSY/personal-skills-system`。
 - 确认工作区用途为「持续创建与管理各类 Skills」，目录与安装闭环已就绪。
 - `bootstrap-workspace` 初始化即带任务清单，并按工作目标自动续做或新建任务档案。
+- `bootstrap-workspace` 改为任务文件夹结构并安装到本机 Cursor / Codex；评级工作区已迁移。见[任务档案](tasks/261022-bootstrap-workspace-任务文件夹结构.md)。
 
 ## In progress
 
@@ -29,6 +30,7 @@ Last updated: 2026-09-22
 
 按需执行，不是当前阻塞项：
 
+0. 推送 `bootstrap-workspace` 0.3.0 到 GitHub `main`，使更新检查生效；跑通后决定是否推广到其他三个 Skill。
 1. 新建 Skill：复制 `templates/skill-record/` → 编写 `package/` → 更新 `SKILLS.md` → 跑安装测试。
 2. 记账 Skill：指定 `SUISHOUJI_WORKBENCH` 后做一次真实试跑。
 3. 早期清单分流：把金山文档、Superpowers、TickTick MCP 等区分为「自制 Skill」与「外部依赖」。
@@ -39,6 +41,8 @@ Last updated: 2026-09-22
 
 ## Last verification
 
+- 2026-10-22：`python3 tests/test_check_update.py -v` 通过（7 tests），`bootstrap-workspace` 升为 0.3.0 并带使用前更新检查。
+- 2026-10-22：`python3 tests/test_scaffold_workspace.py -v` 通过（8 tests）；`python3 tests/test_install_skill.py -v` 通过（4 tests）。任务改为 `tasks/YYMMDD-任务描述/` 文件夹结构。
 - 2026-10-20：`python3 tests/test_scaffold_workspace.py -v` 通过（5 tests）；`python3 tests/test_install_skill.py -v` 通过（4 tests）。任务文件名改为 `YYMMDD-<task-description>`。
 - 2026-09-22：`python3 tests/test_scaffold_workspace.py -v` 通过（5 tests）。
 - 2026-09-22：`python3 tests/test_install_skill.py -v` 通过（4 tests）。
