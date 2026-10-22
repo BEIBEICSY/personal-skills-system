@@ -44,4 +44,4 @@
 - `python3 tests/test_check_update.py -v`：7 passed（已最新、有新版只列更新条目、本机领先、远端不可达、三处版本一致、配置、SKILL 步骤）。
 - `python3 tests/test_scaffold_workspace.py -v`：8 passed；`python3 tests/test_install_skill.py -v`：4 passed。
 - 真实仓库：私有仓库经钥匙串凭据可读，约 1.8 秒；远端尚无 `VERSION`，返回 `unknown` 并说明原因。
-- 未运行：推送后从安装副本比对出 `up-to-date` / `update-available` 的真实链路。
+- 推送后（`062c1b1`）真实链路：本机五份安装副本均为 `up-to-date`（每次约 2–4 秒）；把 bootstrap-workspace 副本改为 0.2.0 后返回 `update-available`，列出 0.3.0 改动与更新命令。
