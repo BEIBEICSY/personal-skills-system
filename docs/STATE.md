@@ -30,7 +30,7 @@ Last updated: 2026-10-22
 
 按需执行，不是当前阻塞项：
 
-0. 记账 Skill：本机 Codex 仍是收包前旧版，决定是否用安装脚本切换到 0.2.0。
+0. 记账 Skill：本机 Codex 仍是收包前旧版；2026-10-22 用户决定暂不切换到 0.2.0，旧版不含更新检查。需要时再对比两版差异并真实试跑。
 1. 新建 Skill：复制 `templates/skill-record/` → 编写 `package/` → 更新 `SKILLS.md` → 跑安装测试。
 2. 记账 Skill：指定 `SUISHOUJI_WORKBENCH` 后做一次真实试跑。
 3. 早期清单分流：把金山文档、Superpowers、TickTick MCP 等区分为「自制 Skill」与「外部依赖」。
