@@ -2,6 +2,12 @@
 
 这是个人 Skills 系统的重要成果索引，按时间倒序维护。只记录可复用的结果、验证和关键失败，不保存聊天转录或私人原始数据。
 
+## 2026-10-22 — bootstrap-workspace 0.4.0 强调外部输入先归档
+
+- **任务：** [任务档案](tasks/261022-bootstrap-workspace-外部输入先归档.md)。
+- **结果：** 生成的 `AGENTS.md` 新增 `Archive inputs first` 规则；默认复制外部文件到任务 `inputs/` 并登记来源、日期与 SHA-256。
+- **验证：** 见任务档案。
+
 ## 2026-10-22 — bootstrap-workspace 0.3.0 增加使用前更新检查
 
 - **任务：** [任务档案](tasks/261022-bootstrap-workspace-更新检查.md)。

@@ -33,6 +33,16 @@ tasks/YYMMDD-<task-description>/
 - Add `-v<N>` before the status when an older version must be kept, for example `V3修改建议-v2-草稿.md`. Rename on status change and update links in `TASK.md`.
 - List every input and output path in `TASK.md`. Reference shared or other tasks' files by relative path instead of copying them.
 
+## Archive inputs first
+
+Whenever the user provides or points to a file for a task, archive it before using it, even if it is outside the workspace (Desktop, Downloads, chat attachments, synced folders). Users often delete the originals later.
+
+- Copy it into the task's `inputs/` by default; move it only when the user explicitly asks. Keep the original file name and never overwrite an archived file; add a suffix on a name clash. Ask first if a file is larger than about 500 MB.
+- Confirm the copy's SHA-256 matches the source, then record the source path, received date, and SHA-256 under Inputs in `TASK.md`.
+- From then on, read and cite the archived copy, never the external path.
+- If a file cannot be archived (online document, inaccessible attachment, missing file), record the gap and reason in `TASK.md`, save an export or snapshot with its retrieval date when possible, and do not treat a summary as a verified original.
+- Material that several tasks use goes to `shared/` when the workspace has it.
+
 ## Source-of-truth order
 
 When project information conflicts, use this order:

@@ -2,6 +2,11 @@
 
 Newest version first. Each heading is `## <version> — <date>`.
 
+## 0.4.0 — 2026-10-22
+
+- New `Archive inputs first` rule: files the user provides, even outside the workspace (Desktop, Downloads, chat attachments), are copied into the task's `inputs/` before use, hash-checked, and recorded with source path, received date, and SHA-256 in `TASK.md`. Move only on explicit request; record a gap when a file cannot be archived.
+- Task template and README explain the archive fields.
+
 ## 0.3.0 — 2026-10-22
 
 - Work is organized as one folder per task: `tasks/YYMMDD-<task-description>/` with `TASK.md` and, when needed, `inputs/`, `work/`, `outputs/`. Shared material goes to `shared/`; no top-level `inputs/`, `work/`, `outputs/`, or `docs/tasks/`.

@@ -28,7 +28,7 @@ python3 tests/test_check_update.py -v
 
 - 日期：2026-10-22
 - 结果：改为任务文件夹结构 `tasks/YYMMDD-<task-description>/`（`TASK.md` + `inputs/` / `work/` / `outputs/`），共用资料放 `shared/`；旧布局检测生效。
-- 结果补充：版本 0.3.0，新增使用前更新检查。
+- 结果补充：版本 0.3.0，新增使用前更新检查；同日 0.4.0 新增 `Archive inputs first`，生成的 AGENTS、README、任务模板均有测试断言。
 - 证据：`python3 tests/test_check_update.py -v` 7 passed；对真实 GitHub 运行检查可访问私有仓库（约 1.8 秒），因远端尚无 `VERSION` 返回 `unknown` 并说明原因。`python3 tests/test_scaffold_workspace.py -v` 8 passed；`python3 tests/test_install_skill.py -v` 4 passed；对评级工作区 dry-run 输出 `Legacy layout detected`，未写入文件。随后安装到本机 Cursor 与 Codex，并与 package 逐文件比对一致。
 
 ## 未运行检查

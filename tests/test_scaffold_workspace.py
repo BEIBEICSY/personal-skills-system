@@ -31,6 +31,8 @@ COMPLETED_TASK_RULE = (
     "ask whether to start a new task folder or continue recording in the existing one"
 )
 OUTPUT_NAME_RULE = "<deliverable>-<草稿|定稿>"
+ARCHIVE_HEADING = "## Archive inputs first"
+ARCHIVE_RULE = "even if it is outside the workspace"
 LEGACY_NOTICE = "Legacy layout detected"
 
 
@@ -105,6 +107,11 @@ class ScaffoldWorkspaceTest(unittest.TestCase):
             self.assertIn(DO_NOT_ASK_FOR_SYSTEM, agents)
             self.assertIn(COMPLETED_TASK_RULE, agents)
             self.assertIn(OUTPUT_NAME_RULE, agents)
+            self.assertIn(ARCHIVE_HEADING, agents)
+            self.assertIn(ARCHIVE_RULE, agents)
+            self.assertIn("Copy it into the task's `inputs/` by default", agents)
+            self.assertIn("外部文件也要先复制进来", readme)
+            self.assertIn("SHA-256", template.read_text(encoding="utf-8"))
             self.assertIn("tasks/INDEX.md", agents)
             self.assertIn("TASK.md", agents)
             self.assertIn(TASK_NAME_RULE, agents)
@@ -208,6 +215,7 @@ class ScaffoldWorkspaceTest(unittest.TestCase):
         self.assertIn("do not ask whether to create a task system", text)
         self.assertIn(COMPLETED_TASK_RULE, text)
         self.assertIn(OUTPUT_NAME_RULE, text)
+        self.assertIn(ARCHIVE_RULE, text)
         self.assertIn("migration table", text)
         self.assertIn(TASK_NAME_RULE, text)
         self.assertNotIn("YYYY-MM-DD-slug.md", text)

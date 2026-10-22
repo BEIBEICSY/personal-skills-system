@@ -139,7 +139,8 @@ Match on the intended outcome, not the session, date, or wording. Multiple tasks
 
 Keep every file the task produces inside its folder:
 
-- Archive originals into the task's `inputs/` and record source and received date in `TASK.md`. Reference `shared/` or another task's files by relative path instead of copying; ask before promoting a task's file to `shared/`.
+- **Archive inputs first.** Whenever the user provides or points to a file, archive it before using it, even if it is outside the workspace (Desktop, Downloads, chat attachments), because users often delete the originals later. Copy it into the task's `inputs/` by default and move it only when the user explicitly asks. Never overwrite an archived file; ask first above about 500 MB. Confirm the SHA-256 matches, record source path, received date, and SHA-256 in `TASK.md`, and from then on read and cite the archived copy. If a file cannot be archived, record the gap and reason, keep an export or snapshot with its retrieval date when possible, and never treat a summary as a verified original.
+- Reference `shared/` or another task's files by relative path instead of copying; ask before promoting a task's file to `shared/`.
 - Name deliverables `outputs/<deliverable>-<草稿|定稿>.<ext>`. Add `-v<N>` before the status only when an older version must be kept. Rename on status change and update links in `TASK.md`.
 - List every input and output path in `TASK.md` so the task folder is self-explanatory.
 
@@ -170,6 +171,7 @@ Confirm that:
 - new tasks are folders named `YYMMDD-<task-description>/` containing `TASK.md`;
 - no top-level `inputs/`, `work/`, or `outputs/` was created, and `README.md` explains each directory in plain language;
 - `AGENTS.md` tells agents to identify whether a request continues an unfinished task or starts a new one;
+- `AGENTS.md` contains the `Archive inputs first` rule for files outside the workspace;
 - `AGENTS.md` and the human-facing navigation expose `HISTORY.md` when no equivalent work-history index already exists;
 - `AGENTS.md` is concise and contains no duplicated project encyclopedia;
 - `PROJECT.md`, `STATE.md`, `HISTORY.md`, and `DECISIONS.md` have distinct responsibilities;
