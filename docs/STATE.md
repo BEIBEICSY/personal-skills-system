@@ -30,7 +30,7 @@ Last updated: 2026-10-22
 
 按需执行，不是当前阻塞项：
 
-0. 推送 `bootstrap-workspace` 0.3.0 到 GitHub `main`，使更新检查生效；跑通后决定是否推广到其他三个 Skill。
+0. 记账 Skill：本机 Codex 仍是收包前旧版，决定是否用安装脚本切换到 0.2.0。
 1. 新建 Skill：复制 `templates/skill-record/` → 编写 `package/` → 更新 `SKILLS.md` → 跑安装测试。
 2. 记账 Skill：指定 `SUISHOUJI_WORKBENCH` 后做一次真实试跑。
 3. 早期清单分流：把金山文档、Superpowers、TickTick MCP 等区分为「自制 Skill」与「外部依赖」。

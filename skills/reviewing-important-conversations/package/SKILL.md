@@ -5,6 +5,23 @@ description: Use when the user provides or describes an important non-therapy co
 
 # 重要沟通整理与复盘
 
+## 使用前：检查新版
+
+每次使用本 Skill，先解析其安装目录并运行：
+
+```bash
+python3 <skill-directory>/scripts/check_update.py
+```
+
+脚本用 Git 和用户已有凭据，对比本机 `VERSION` 与 `update.json` 指定的 GitHub 分支上的版本。按 `status` 处理：
+
+- `up-to-date`：不提示，直接继续。
+- `update-available`：在开始其他工作前，告诉用户当前版本、最新版本、`changes` 中每个新版本的简要改动，以及 `update_steps`；询问现在更新还是先用当前版本继续。不自动更新。用户选择更新时，执行更新步骤后重新读取新的 `SKILL.md` 再继续。
+- `ahead`：用一句话说明本机版本比 GitHub 新（多半尚未推送），然后继续。
+- `unknown`：用一句话说明无法检查及原因，然后继续。
+
+检查不得阻塞用户的工作，也不得输出或记录任何凭据。
+
 ## 核心原则
 
 忠实材料与后续理解分开；任何结论都能回到具体来源。适用于老板 one-on-one、同事协作、朋友深聊、伴侣和家庭沟通等非心理咨询场景。

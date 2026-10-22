@@ -123,28 +123,53 @@ class CheckUpdateTest(unittest.TestCase):
             self.assertIn("reason:", result.stdout)
 
 
-class VersionConsistencyTest(unittest.TestCase):
-    def test_version_manifest_and_changelog_agree(self) -> None:
-        version = (PACKAGE / "VERSION").read_text(encoding="utf-8").strip()
-        self.assertRegex(version, r"^\d+\.\d+\.\d+$")
-        manifest = (SKILL_DIR / "manifest.yaml").read_text(encoding="utf-8")
-        self.assertIn(f"version: {version}\n", manifest)
-        changelog = (PACKAGE / "CHANGELOG.md").read_text(encoding="utf-8")
-        first = re.search(r"^## (\d+\.\d+\.\d+)", changelog, re.MULTILINE)
-        self.assertIsNotNone(first)
-        self.assertEqual(first.group(1), version)
+PACKAGED_SKILLS = sorted(
+    path.parent.name for path in (REPO_ROOT / "skills").glob("*/package")
+)
 
-    def test_update_config_points_at_package(self) -> None:
-        config = json.loads((PACKAGE / "update.json").read_text(encoding="utf-8"))
-        self.assertEqual(config["skill_id"], "bootstrap-workspace")
-        self.assertEqual(config["path"], PACKAGE_PATH)
-        self.assertEqual(config["branch"], "main")
-        self.assertTrue(config["repository"].startswith("https://github.com/"))
+
+class VersionConsistencyTest(unittest.TestCase):
+    def test_every_package_is_versioned(self) -> None:
+        self.assertEqual(len(PACKAGED_SKILLS), 4)
+        for skill_id in PACKAGED_SKILLS:
+            with self.subTest(skill=skill_id):
+                package = REPO_ROOT / "skills" / skill_id / "package"
+                version = (package / "VERSION").read_text(encoding="utf-8").strip()
+                self.assertRegex(version, r"^\d+\.\d+\.\d+$")
+                manifest = (package.parent / "manifest.yaml").read_text(encoding="utf-8")
+                self.assertIn(f"version: {version}\n", manifest)
+                changelog = (package / "CHANGELOG.md").read_text(encoding="utf-8")
+                first = re.search(r"^## (\d+\.\d+\.\d+)", changelog, re.MULTILINE)
+                self.assertIsNotNone(first)
+                self.assertEqual(first.group(1), version)
+
+    def test_update_config_points_at_own_package(self) -> None:
+        for skill_id in PACKAGED_SKILLS:
+            with self.subTest(skill=skill_id):
+                package = REPO_ROOT / "skills" / skill_id / "package"
+                config = json.loads((package / "update.json").read_text(encoding="utf-8"))
+                self.assertEqual(config["skill_id"], skill_id)
+                self.assertEqual(config["path"], f"skills/{skill_id}/package")
+                self.assertEqual(config["branch"], "main")
+                self.assertTrue(config["repository"].startswith("https://github.com/"))
+
+    def test_check_scripts_are_identical(self) -> None:
+        reference = (PACKAGE / "scripts" / "check_update.py").read_bytes()
+        for skill_id in PACKAGED_SKILLS:
+            with self.subTest(skill=skill_id):
+                script = REPO_ROOT / "skills" / skill_id / "package" / "scripts" / "check_update.py"
+                self.assertEqual(script.read_bytes(), reference)
 
     def test_skill_runs_check_first(self) -> None:
-        text = (PACKAGE / "SKILL.md").read_text(encoding="utf-8")
-        self.assertIn("scripts/check_update.py", text)
-        self.assertIn("Do not update automatically", text)
+        for skill_id in PACKAGED_SKILLS:
+            with self.subTest(skill=skill_id):
+                text = (REPO_ROOT / "skills" / skill_id / "package" / "SKILL.md").read_text(
+                    encoding="utf-8"
+                )
+                self.assertIn("scripts/check_update.py", text)
+                self.assertTrue(
+                    "Do not update automatically" in text or "不自动更新" in text
+                )
 
 
 if __name__ == "__main__":

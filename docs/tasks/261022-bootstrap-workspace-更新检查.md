@@ -19,7 +19,7 @@
 
 - 只用 Git 访问，不依赖 `gh` 登录；不读取或记录凭据。
 - 检查失败（无网、无权限、超时）不得阻塞工作。
-- 先只覆盖 `bootstrap-workspace`；脚本保持通用以便复用。
+- 起初只覆盖 `bootstrap-workspace`；用户随后要求推广到全部四个已收包 Skill。
 
 ## Acceptance criteria
 
@@ -32,6 +32,7 @@
 - Completed.
 - 2026-10-22：用户确认设计，范围先限 `bootstrap-workspace`；与任务文件夹改造合并发布为 0.3.0。
 - 2026-10-22：实现并测试完成，安装到本机 Cursor / Codex。推送与否待用户决定；推送前远端无 `VERSION`，检查返回 `unknown`。
+- 2026-10-22：用户要求提交推送，并把检查推广到其余三个 Skill（各升 0.2.0）。两个复盘 Skill 已更新本机安装；记账 Skill 的 Codex 安装是收包前旧版，未覆盖，待用户决定。
 
 ## Outcome
 

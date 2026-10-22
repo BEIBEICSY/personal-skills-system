@@ -2,7 +2,7 @@
 
 ## 2026-10-22 — 已收包 Skill 以 VERSION 发版，使用前对比 GitHub main
 
-**Decision:** 带 `package/VERSION` 的 Skill 每次改包都升版本、写 CHANGELOG、同步 manifest；推送到 `main` 即发布。Skill 每次使用先运行 `check_update.py`，通过 Git 和用户已有凭据读取 `main` 上的版本，有新版时提示版本、改动和更新命令，不自动更新，检查失败不阻塞。先在 `bootstrap-workspace` 落地，跑通后再推广。
+**Decision:** 带 `package/VERSION` 的 Skill 每次改包都升版本、写 CHANGELOG、同步 manifest；推送到 `main` 即发布。Skill 每次使用先运行 `check_update.py`，通过 Git 和用户已有凭据读取 `main` 上的版本，有新版时提示版本、改动和更新命令，不自动更新，检查失败不阻塞。用户要求四个已收包 Skill 同时落地；四份检查脚本必须完全一致，由测试保证。
 
 **Reason:** 用户希望每次使用都能知道是否有新版及新版内容；仓库私有，`gh` 未必登录，Git 凭据是本机与有权限朋友都具备的最小依赖。
 

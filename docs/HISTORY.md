@@ -8,7 +8,8 @@
 - **结果：** Skill 每次使用先对比本机与 GitHub `main` 的版本，有新版时提示版本、改动与更新命令；本仓库 `AGENTS.md` 增加发版纪律。
 - **产物：** `package/VERSION`、`CHANGELOG.md`、`update.json`、`scripts/check_update.py`；`tests/test_check_update.py`。
 - **验证：** 更新检查 7 passed、脚手架 8 passed、安装 4 passed；真实私有仓库可访问。
-- **后续：** 推送后版本比较才生效；跑通后推广到其他已收包 Skill。
+- **推广：** 同日应用户要求推广到其余三个 Skill（各升 0.2.0），四份检查脚本由测试保证一致；两个复盘 Skill 已更新本机安装，记账 Skill 本机为收包前旧版，未覆盖。
+- **后续：** 推送后在真实仓库确认四个 Skill 均为 `up-to-date`。
 
 ## 2026-10-22 — bootstrap-workspace 改为任务文件夹结构
 

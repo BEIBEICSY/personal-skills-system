@@ -11,6 +11,23 @@ description: Use when the user wants to turn Alipay/WeChat bills or a merged bil
 
 原始账单、导入结果和校对报告放在用户指定的**本地工作台**，不要写入 Skills 管理仓库。工作台可用环境变量 `SUISHOUJI_WORKBENCH`；未设置时先询问用户。LibreOffice 可执行文件可用 `SUISHOUJI_SOFFICE` 覆盖，默认查找 `soffice`。
 
+## 使用前：检查新版
+
+每次使用本 Skill，先解析其安装目录并运行：
+
+```bash
+python3 <skill-directory>/scripts/check_update.py
+```
+
+脚本用 Git 和用户已有凭据，对比本机 `VERSION` 与 `update.json` 指定的 GitHub 分支上的版本。按 `status` 处理：
+
+- `up-to-date`：不提示，直接继续。
+- `update-available`：在开始其他工作前，告诉用户当前版本、最新版本、`changes` 中每个新版本的简要改动，以及 `update_steps`；询问现在更新还是先用当前版本继续。不自动更新。用户选择更新时，执行更新步骤后重新读取新的 `SKILL.md` 再继续。
+- `ahead`：用一句话说明本机版本比 GitHub 新（多半尚未推送），然后继续。
+- `unknown`：用一句话说明无法检查及原因，然后继续。
+
+检查不得阻塞用户的工作，也不得输出或记录任何凭据。
+
 ## 资料入口
 
 优先把资料整理到工作台目录：
